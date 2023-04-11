@@ -1,0 +1,24 @@
+
+.button-style1 {
+    -fx-background-color:rgb(135,206,250);/* couleur de fond */
+    -fx-text-fill: white; /* couleur du texte */
+    -fx-font-size: 14pt; /* taille de la police */
+    -fx-padding: 10px 20px; /* marge interne */
+}
+
+.transparent1 {
+    -fx-background-color: rgba(0,0,0,0) ;/* couleur de fond */
+    
+}
+.border1 {
+    -fx-border-color: 	rgb(135,206,250);/* couleur de fond */
+    -fx-border-width: 1.5;/* couleur de fond */
+    
+    
+}
+.right-side-border1 {
+    -fx-border-color: rgb(135,206,250);/* couleur de fond */
+    -fx-border-width: 0 1.5 0 0;/* couleur de fond */
+    
+    
+}

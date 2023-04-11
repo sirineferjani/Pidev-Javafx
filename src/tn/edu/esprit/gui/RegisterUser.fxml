@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.RegisterUserController">
+    <children>
+      <Button layoutX="258.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterPersonne" prefHeight="26.0" prefWidth="116.0" styleClass="button-style1" stylesheets="@../../../../../style2.css" text="Valider" />
+      <Label layoutX="396.0" layoutY="362.0" onMouseClicked="#GoToLogin" text="compte existant?" />
+      <HBox layoutX="246.0" layoutY="31.0" prefHeight="46.0" prefWidth="241.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+         <children>
+            <Pane prefHeight="93.0" prefWidth="48.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="37.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/name.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <TextField fx:id="tfNom" prefHeight="43.0" prefWidth="174.0" promptText="Nom" styleClass="transparent1" stylesheets="@../../../../../style2.css" />
+         </children>
+      </HBox>
+      <HBox layoutX="246.0" layoutY="90.0" prefHeight="46.0" prefWidth="241.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+         <children>
+            <Pane prefHeight="43.0" prefWidth="56.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="54.0" layoutX="9.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/position.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <TextField fx:id="tfPrenom" prefHeight="43.0" prefWidth="173.0" promptText="Adresse" styleClass="transparent1" stylesheets="@../../../../../style2.css" />
+         </children>
+      </HBox>
+      <HBox layoutX="246.0" layoutY="153.0" prefHeight="46.0" prefWidth="242.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+         <children>
+            <Pane prefHeight="43.0" prefWidth="58.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
+               <children>
+                  <ImageView fitHeight="46.0" fitWidth="37.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/email.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <TextField fx:id="tfemail" prefHeight="45.0" prefWidth="172.0" promptText="E-mail" styleClass="transparent1" stylesheets="@../../../../../style2.css" />
+         </children>
+      </HBox>
+      <HBox layoutX="245.0" layoutY="214.0" prefHeight="46.0" prefWidth="242.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+         <children>
+            <Pane prefHeight="43.0" prefWidth="59.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
+               <children>
+                  <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="12.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/password.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <PasswordField fx:id="tfMotDePasse" prefHeight="43.0" prefWidth="175.0" promptText="Mot De Passe" styleClass="transparent1" stylesheets="@../../../../../style2.css" />
+         </children>
+      </HBox>
+      <VBox prefHeight="400.0" prefWidth="230.0">
+         <children>
+            <Pane prefHeight="402.0" prefWidth="230.0">
+               <children>
+                  <ImageView fitHeight="401.0" fitWidth="241.0" layoutX="-8.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/register.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <Button fx:id="btnAjouterPhoto" layoutX="302.0" layoutY="283.0" mnemonicParsing="false" onAction="#choisirImage" text="upload" />
+      <ImageView fitHeight="124.0" fitWidth="143.0" layoutX="488.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="89.0" fitWidth="164.0" layoutX="383.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="ImageName" layoutX="546.0" layoutY="287.0" text="Label" />
+    
+
+   
+   </children> 
+</AnchorPane>

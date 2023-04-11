@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.ProfileuserController">
+   <children>
+      <Label fx:id="nameLabel" layoutX="80.0" layoutY="43.0" text="Label" />
+      <Label fx:id="Labelemail" layoutX="94.0" layoutY="200.0" text="Label" />
+      <Label fx:id="adressLabel" layoutX="80.0" layoutY="90.0" text="Label" />
+      <Label fx:id="roleLabel" layoutX="94.0" layoutY="240.0" text="Label" />
+   </children>
+</AnchorPane>
