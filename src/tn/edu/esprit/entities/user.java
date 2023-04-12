@@ -113,15 +113,15 @@ public class user {
         this.role = role;
     }
 
-    public user(String nom, String prenom, String password, String role) {
+    public user(int id, String nom, String prenom, String password, String role, String email) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
         this.role = role;
+        this.email = email;
     }
 
-    
- 
-
+   
    
 }

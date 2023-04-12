@@ -65,13 +65,21 @@ public class ServicePersonne implements IService<user>{
         
         st.executeUpdate();
     }
-
+    
     @Override
     public void modifier(user p) throws SQLException{
-        String req = "UPDATE `personne` SET `nom` = '"+p.getNom()+"', `prenom` = '"+p.getPrenom()+"' WHERE `personne`.`id` = "+p.getId();
-        Statement st = ds.getCnx().createStatement();
-        st.executeUpdate(req);
-    }
+    String req = "UPDATE personne SET nom=?, email=?, adresse=?, password=? WHERE id=?";
+    //String req = "UPDATE personne SET nom=?, email=?, adresse=? WHERE id=?";
+    PreparedStatement ps = ds.getCnx().prepareStatement(req);
+    ps.setString(1, p.getNom());
+    ps.setString(2, p.getEmail());
+    ps.setString(3, p.getPrenom());
+    ps.setString(4, p.getPassword());
+    ps.setInt(5, p.getId());
+    ps.executeUpdate();
+}
+
+
 
     @Override
     public void supprimer(int id) throws SQLException{
@@ -129,7 +137,7 @@ public class ServicePersonne implements IService<user>{
         throw new RuntimeException(ex);
     }
 }
-    public user getUserByEmail(String email) throws SQLException {
+  /*  public user getUserByEmail(String email) throws SQLException {
     user user =null; //La ligne User user = null; sert simplement à initialiser la variable user à null.
      //Cette variable est ensuite utilisée pour stocker les informations de l'utilisateur récupéré depuis la base de données.
 
@@ -149,8 +157,41 @@ public class ServicePersonne implements IService<user>{
         }
     
     return user;
-}
+}*/
     
+    
+     public user getUserByEmail2(String email) throws SQLException {
+    user user =null; //La ligne User user = null; sert simplement à initialiser la variable user à null.
+     //Cette variable est ensuite utilisée pour stocker les informations de l'utilisateur récupéré depuis la base de données.
+
+     String req = "SELECT * FROM personne WHERE EMAIL = ?";
+     PreparedStatement st = ds.getCnx().prepareStatement(req); 
+    
+        
+        st.setString(1, email); // pour renvoyer le parametre email qui substitue le point d'interrogation bich wa9tha texecuta il requete bil parametre edheka
+        try (ResultSet rs = st.executeQuery()) {
+            if (rs.next()) {
+                user = new user(rs.getInt("id"),
+                        rs.getString("nom"),
+                        rs.getString("adresse"),
+                        rs.getString("password"),
+                         rs.getString("role"),
+                        rs.getString("email"));
+            }
+        }
+    
+    return user;
+}
+     
+       public void updateUser(user user) throws SQLException {
+        String req = "UPDATE users SET nom = ?, email = ?, prenom = ? WHERE id = ?";
+       PreparedStatement ps = ds.getCnx().prepareStatement(req);
+        ps.setString(1, user.getNom());
+        ps.setString(2, user.getEmail());
+        ps.setString(3, user.getPrenom());
+        ps.setInt(4, user.getId());
+        ps.executeUpdate();
+    }
    /*  public user getUserByEmail(String email) throws SQLException {
     user user =null; //La ligne User user = null; sert simplement à initialiser la variable user à null.
      //Cette variable est ensuite utilisée pour stocker les informations de l'utilisateur récupéré depuis la base de données.

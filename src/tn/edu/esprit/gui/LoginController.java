@@ -56,7 +56,7 @@ public class LoginController implements Initializable {
     try {
         boolean result = service.login(emaillogin.getText(), pwdlogin.getText());
         if (result) {
-            user u = service.getUserByEmail(emaillogin.getText());
+            user u = service.getUserByEmail2(emaillogin.getText());
             if(u.getRole().equals("Admin")) {
             Parent root = FXMLLoader.load(getClass().getResource("adminback.fxml"));
             Scene scene = new Scene(root);
