@@ -13,9 +13,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.RegisterUserController">
     <children>
-      <Button layoutX="258.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterPersonne" prefHeight="26.0" prefWidth="116.0" styleClass="button-style1" stylesheets="@../../../../../style2.css" text="Valider" />
-      <Label layoutX="396.0" layoutY="362.0" onMouseClicked="#GoToLogin" text="compte existant?" />
-      <HBox layoutX="246.0" layoutY="31.0" prefHeight="46.0" prefWidth="241.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+      <Button layoutX="358.0" layoutY="350.0" mnemonicParsing="false" onAction="#ajouterPersonne" prefHeight="37.0" prefWidth="102.0" styleClass="button-style1" stylesheets="@../../../../../style2.css" text="Valider" />
+      <Label layoutX="488.0" layoutY="356.0" onMouseClicked="#GoToLogin" text="compte existant?" />
+      <HBox layoutX="320.0" layoutY="24.0" prefHeight="46.0" prefWidth="241.0" styleClass="border1" stylesheets="@../../../../../style2.css">
          <children>
             <Pane prefHeight="93.0" prefWidth="48.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
                <children>
@@ -29,7 +29,7 @@
             <TextField fx:id="tfNom" prefHeight="43.0" prefWidth="174.0" promptText="Nom" styleClass="transparent1" stylesheets="@../../../../../style2.css" />
          </children>
       </HBox>
-      <HBox layoutX="246.0" layoutY="90.0" prefHeight="46.0" prefWidth="241.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+      <HBox layoutX="320.0" layoutY="92.0" prefHeight="46.0" prefWidth="241.0" styleClass="border1" stylesheets="@../../../../../style2.css">
          <children>
             <Pane prefHeight="43.0" prefWidth="56.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
                <children>
@@ -43,7 +43,7 @@
             <TextField fx:id="tfPrenom" prefHeight="43.0" prefWidth="173.0" promptText="Adresse" styleClass="transparent1" stylesheets="@../../../../../style2.css" />
          </children>
       </HBox>
-      <HBox layoutX="246.0" layoutY="153.0" prefHeight="46.0" prefWidth="242.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+      <HBox layoutX="320.0" layoutY="167.0" prefHeight="46.0" prefWidth="242.0" styleClass="border1" stylesheets="@../../../../../style2.css">
          <children>
             <Pane prefHeight="43.0" prefWidth="58.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
                <children>
@@ -57,7 +57,7 @@
             <TextField fx:id="tfemail" prefHeight="45.0" prefWidth="172.0" promptText="E-mail" styleClass="transparent1" stylesheets="@../../../../../style2.css" />
          </children>
       </HBox>
-      <HBox layoutX="245.0" layoutY="214.0" prefHeight="46.0" prefWidth="242.0" styleClass="border1" stylesheets="@../../../../../style2.css">
+      <HBox layoutX="320.0" layoutY="239.0" prefHeight="46.0" prefWidth="242.0" styleClass="border1" stylesheets="@../../../../../style2.css">
          <children>
             <Pane prefHeight="43.0" prefWidth="59.0" styleClass="right-side-border1" stylesheets="@../../../../../style2.css">
                <children>
@@ -75,19 +75,23 @@
          <children>
             <Pane prefHeight="402.0" prefWidth="230.0">
                <children>
-                  <ImageView fitHeight="401.0" fitWidth="241.0" layoutX="-8.0" pickOnBounds="true">
+                  <ImageView fitHeight="400.0" fitWidth="276.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../images/register.png" />
+                        <Image url="@../images/backg.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="371.0" fitWidth="242.0" layoutX="15.0" layoutY="13.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/lo.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
          </children>
       </VBox>
-      <Button fx:id="btnAjouterPhoto" layoutX="302.0" layoutY="283.0" mnemonicParsing="false" onAction="#choisirImage" text="upload" />
+      <Button fx:id="btnAjouterPhoto" layoutX="338.0" layoutY="300.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="37.0" prefWidth="81.0" styleClass="button-style2" stylesheets="@../../../../../style.css" text="image" />
       <ImageView fitHeight="124.0" fitWidth="143.0" layoutX="488.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView" fitHeight="89.0" fitWidth="164.0" layoutX="383.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="ImageName" layoutX="546.0" layoutY="287.0" text="Label" />
+      <ImageView fx:id="imageView" fitHeight="71.0" fitWidth="143.0" layoutX="449.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
     
 
    

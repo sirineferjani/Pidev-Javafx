@@ -62,11 +62,20 @@
       </ImageView>
       <VBox layoutY="-1.0" prefHeight="404.0" prefWidth="226.0">
          <children>
-            <ImageView fitHeight="404.0" fitWidth="234.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../images/background.jpg" />
-               </image>
-            </ImageView>
+            <Pane prefHeight="412.0" prefWidth="226.0">
+               <children>
+                  <ImageView fitHeight="410.0" fitWidth="262.0" layoutX="-2.0" layoutY="-4.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/backg.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="372.0" fitWidth="218.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/background.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </VBox>
    </children>
