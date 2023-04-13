@@ -20,12 +20,12 @@ import javafx.stage.Stage;
  *
  * @author user
  */
-public class Test extends Application {
+public class NewFXMain extends Application {
     
     @Override
-     public void start(Stage primaryStage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/categorie.fxml"));
+    public void start(Stage primaryStage) {
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Article.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root,1000,700);
             primaryStage.setTitle("Hello World!");

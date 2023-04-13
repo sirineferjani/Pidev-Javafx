@@ -29,7 +29,7 @@ public class articleService {
     
   public void ajouterArticle(article a) {
     try { 
-        String requete = "INSERT INTO article(ref_article,nom_article,description,prix,image,stock)"+" VALUES (?,?,?,?,?,?)";
+        String requete = "INSERT INTO article(ref_article,nom_article,description,prix,image,stock,categories_id)"+" VALUES (?,?,?,?,?,?,?)";
         PreparedStatement pst = new DataSource().getCnx().prepareStatement(requete);
         pst.setObject(1, a.getRef_article());
         pst.setString(2, a.getNom_article());
@@ -37,6 +37,7 @@ public class articleService {
         pst.setInt(4, a.getPrix());
         pst.setString(5, a.getImage());
         pst.setInt(6, a.getStock());
+        pst.setObject(7, a.getCategorie().getId());
         pst.executeUpdate();
         System.out.println("Article ajouté");
     } catch (SQLException ex) {
@@ -44,21 +45,24 @@ public class articleService {
     } 
 }
 
-    public List<article> afficherArticle() {
-      List<article> myList= new ArrayList<>();
+    public ObservableList<article> afficherArticle() {
+      ObservableList<article> myList= FXCollections.observableArrayList();
         
     
         try {
             String sql="SELECT * FROM article";
             Statement ste=cnx.createStatement();
             ResultSet rs= ste.executeQuery(sql);
+            categorieService cs=new categorieService();
             while(rs.next()){
                  article a = new article();
+                 a.setId(rs.getInt("id"));
+                 a.setCategorie(cs.getCatParId(rs.getInt("categories_id")));
                  a.setRef_article(rs.getInt("ref_article"));
                  a.setNom_article(rs.getString("nom_article")); 
                  a.setDescription(rs.getString("description"));
                  a.setPrix(rs.getInt("prix"));
-                 a.setImage("image");
+                 a.setImage(rs.getString("image"));
                   a.setStock(rs.getInt("stock"));
                  
 
@@ -69,18 +73,19 @@ public class articleService {
         }
         return myList;
     }
-        public void supprimerArticle(int id) {
-        try {
-            String req = "DELETE FROM `article` WHERE id = " + id;
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
+        public void supprimerArticle(article a) {
+        String req = "DELETE FROM article WHERE id=?";
+            try {
+            PreparedStatement ste=cnx.prepareStatement(req);
+            ste.setInt(1, a.getId());
+            ste.executeUpdate();
             System.out.println("Article deleted !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
          public void modifier(article a) {
-        String sql="update article set ref_article=?,nom_article=?,description=?,prix=?,image=?,stock=?,where id=? ";
+        String sql="update article set ref_article=?,nom_article=?,description=?,prix=?,image=?,stock=?,categories_id=? where id=? ";
         PreparedStatement ste ;
         try {
             ste = cnx.prepareStatement(sql);
@@ -90,7 +95,8 @@ public class articleService {
             ste.setInt(4, a.getPrix());
             ste.setString(5, a.getImage());
             ste.setInt(6, a.getStock());
-           
+            ste.setObject(7, a.getCategorie().getId());
+            ste.setInt(8, a.getId());
           
             ste.executeUpdate();
             System.out.println("Article modifié");
@@ -101,7 +107,7 @@ public class articleService {
          
          public ObservableList<article> findprodbycat(int idprod){
         ObservableList< article>prod=FXCollections.observableArrayList();
-        String sql="select * from article where categorie_id=?";
+        String sql="select * from article where categories_id=?";
         PreparedStatement ste;
         categorieService cs=new categorieService();
         try{
@@ -119,5 +125,6 @@ public class articleService {
         }
         return prod;
     }
+ 
 
 }

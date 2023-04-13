@@ -26,8 +26,9 @@ public class NewMain {
        // System.out.println(as.afficherArticle());
       //   article a = new article(70,"camping","aaa",50,"aaa",50);
       // as.ajouterArticle(a);
-      categorieService cs = new categorieService();
-      categorie c = new categorie("Natation","aaaaa");
+      articleService cs = new articleService();
+    //  categorie c = new categorie("Natation","aaaaa");
+    
       //cs.ajouterCategorie(c);
       //cs.supprimerCategorie(53);
     }

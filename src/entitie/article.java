@@ -27,7 +27,7 @@ public class article {
         this.prix = prix;
         this.image = image;
         this.stock = stock;
-        this.note = note;
+        this.note = 0;
         this.categorie = categorie;
     }
 
@@ -85,10 +85,39 @@ public class article {
         this.stock = stock;
     }
 
+    public article(int ref_article, String nom_article, String description, int prix, String image, int stock, categorie categorie) {
+        this.ref_article = ref_article;
+        this.nom_article = nom_article;
+        this.description = description;
+        this.prix = prix;
+        this.image = image;
+        this.stock = stock;
+        this.categorie = categorie;
+        this.note=0;
+    }
+    
+
+    public article(int id, int ref_article, String nom_article, String description, int prix, String image, int stock, categorie categorie) {
+        this.id = id;
+        this.ref_article = ref_article;
+        this.nom_article = nom_article;
+        this.description = description;
+        this.prix = prix;
+        this.image = image;
+        this.stock = stock;
+        this.categorie = categorie;
+        this.note=0;
+    }
+
 
     public int getId() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public int getRef_article() {
         return ref_article;

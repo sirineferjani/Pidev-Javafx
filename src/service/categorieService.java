@@ -77,13 +77,13 @@ public class categorieService {
         }
     }
          public void modifierCategorie(categorie c) {
-        String sql="update categorie set nom_c=?,image_c=?,where id=? ";
+        String sql="update categorie set nom_c=?,image_c=? where id=? ";
         PreparedStatement ste ;
         try {
             ste = cnx.prepareStatement(sql);
             ste.setString(1, c.getNom_c());
             ste.setString(2, c.getImage_c());
-        
+            ste.setInt(3, c.getId());
            
           
             ste.executeUpdate();

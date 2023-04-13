@@ -10,6 +10,9 @@ package utils;
  * @author user
  */
 public class Statics {
-    public static String uploadDirectory="";
+    public static String uploadDirectory="C:/xampp/htdocs/ATP/public/uploads/articles//";
+    public static String uploadDirectory1 = "C:/xampp/htdocs/ATP/public/uploads/categories//";
+    
+    
     
 }

@@ -10,10 +10,16 @@ import entitie.categorie;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +35,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import service.articleService;
 import service.categorieService;
+import utils.Statics;
 
 /**
  * FXML Controller class
@@ -69,6 +76,8 @@ public class ArticleController implements Initializable {
     private Label erreurimg;
     @FXML
     private Label erreurdesc;
+    private File selectedFile;
+    categorieService cs;
 
     /**
      * Initializes the controller class.
@@ -107,17 +116,32 @@ public boolean testpos(float d){
         
         
         
-     int ref_article=Integer.parseInt(refa.getText());
+        int ref_article=Integer.parseInt(refa.getText());
         String nom_article = noma.getText();
         String description = dsea.getText();
-     int prix=   Integer.parseInt(prixa.getText());
+        int prix=   Integer.parseInt(prixa.getText());
         String image = imagea.getText();
-       int stock= Integer.parseInt(sa.getText());
+        int stock= Integer.parseInt(sa.getText());
+        String chaine = catcombo.getValue();
+        int index = chaine.indexOf(":");
+        String sousChaine = chaine.substring(0, index);
+        System.out.println(sousChaine);
+        cs=new categorieService();
+          categorie cat2=cs.getCatParId(Integer.parseInt(sousChaine));
        if(!noma.getText().isEmpty()&&!prixa.getText().isEmpty()&&!dsea.getText().isEmpty()&&!imagea.getText().isEmpty()&&!sa.getText().isEmpty()&&!refa.getText().isEmpty())
        {
-            article a = new article(ref_article,nom_article ,description, prix,image,stock);
+           int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+            String newFileName = random_int+"-"+selectedFile.getName();
+            article a = new article(ref_article,nom_article ,description, prix,newFileName,stock,cat2);
             articleService ps = new articleService();
             ps.ajouterArticle(a);
+            Path sourceFile = Paths.get(selectedFile.toPath().toString());
+        Path targetFile = Paths.get(Statics.uploadDirectory   +newFileName);
+        try {
+            Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(ArticleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
        }
        if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
            erreurnom.setText("not NULL");
@@ -150,7 +174,19 @@ public boolean testpos(float d){
 
     @FXML
     private void uploadimg(ActionEvent event) {
+         final FileChooser fileChooser = new FileChooser(); //outil eli nekhdhou bih el fichier
+        final Stage stage = null;// el fenetre eli bech tethal
+
+        File file = fileChooser.showOpenDialog(stage); //halina el fenetre w recuperina el fichier
+        if (file != null) { //ntestiow est ce que fichier null wale
+            //Image image1 = new Image(file.toURI().toString());
+            //addImage.setImage(image1);//badalna el image
+            imagea.setText(file.getName()); //badalna el input
+            selectedFile = file;
+        }
+        
        
     }
+    
     
 }

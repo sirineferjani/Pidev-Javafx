@@ -79,10 +79,12 @@ public class CatDispalyController implements Initializable {
             btn.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn.setOnAction(e->{
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Categoryupdate.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Updatecat.fxml"));
                     Parent root = loader.load();
                     //CategoryupdateController cuc=loader.getController();
                     //cuc.setData(cat);
+                    UpdatecatController ucc=loader.getController();
+                    ucc.getdata(cat);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setTitle("Edit categorie");
