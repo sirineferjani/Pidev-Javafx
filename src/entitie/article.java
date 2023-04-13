@@ -18,8 +18,40 @@ public class article {
     private String image;
     private int stock;
     private float note;
+    private categorie categorie;
 
-    public article() {
+    public article(int ref_article, String nom_article, String description, int prix, String image, int stock, float note, categorie categorie) {
+        this.ref_article = ref_article;
+        this.nom_article = nom_article;
+        this.description = description;
+        this.prix = prix;
+        this.image = image;
+        this.stock = stock;
+        this.note = note;
+        this.categorie = categorie;
+    }
+
+    public article(int id, int ref_article, String nom_article, String description, int prix, String image, int stock, float note, categorie categorie) {
+        this.id = id;
+        this.ref_article = ref_article;
+        this.nom_article = nom_article;
+        this.description = description;
+        this.prix = prix;
+        this.image = image;
+        this.stock = stock;
+        this.note = note;
+        this.categorie = categorie;
+    }
+
+    public categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(categorie categorie) {
+        this.categorie = categorie;
+    }
+
+     public article() {
     }
     
 

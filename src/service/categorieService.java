@@ -14,6 +14,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.DataSource;
 
 /**
@@ -39,8 +42,8 @@ public class categorieService {
     } 
 }
     
-    public List<categorie> afficherCategorie() {
-      List<categorie> myList= new ArrayList<>();
+    public ObservableList<categorie> afficherCategorie() {
+       ObservableList<categorie> myList= FXCollections.observableArrayList();
         
     
         try {
@@ -49,7 +52,7 @@ public class categorieService {
             ResultSet rs= ste.executeQuery(sql);
             while(rs.next()){
                  categorie c = new categorie();
-              
+                 c.setId(rs.getInt(1));
                  c.setNom_c(rs.getString("nom_c")); 
                  c.setImage_c(rs.getString("image_c"));
          
@@ -62,11 +65,12 @@ public class categorieService {
         }
         return myList;
     }
-     public void supprimerCategorie(int id) {
+     public void supprimerCategorie(categorie cat) {
         try {
-            String req = "DELETE FROM `categorie` WHERE id = " + id;
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
+            String req = "DELETE FROM `categorie` WHERE id = ?";
+            PreparedStatement ste=cnx.prepareStatement(req);
+            ste.setInt(1, cat.getId());
+            ste.executeUpdate();
             System.out.println("Categorie supprimée !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -88,4 +92,24 @@ public class categorieService {
             System.out.println(ex.getMessage());
         }
     }
+         public categorie getCatParId(int id) {
+    String sql = "SELECT * FROM categorie WHERE id = ?";
+    PreparedStatement ste;
+    try {
+        ste = cnx.prepareStatement(sql);
+        ste.setInt(1, id);
+        ResultSet rs = ste.executeQuery();
+        if (rs.next()) {
+            categorie c = new categorie(
+                    rs.getInt("id"),
+                    rs.getString("nom_c"),
+                    rs.getString("image_c")
+            );
+            return c;
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return null;
+}
 }

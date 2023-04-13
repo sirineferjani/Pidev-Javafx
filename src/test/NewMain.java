@@ -29,7 +29,7 @@ public class NewMain {
       categorieService cs = new categorieService();
       categorie c = new categorie("Natation","aaaaa");
       //cs.ajouterCategorie(c);
-      cs.supprimerCategorie(53);
+      //cs.supprimerCategorie(53);
     }
     
 }

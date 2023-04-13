@@ -6,21 +6,29 @@
 package gui;
 
 import entitie.article;
+import entitie.categorie;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import service.articleService;
+import service.categorieService;
 
 /**
  * FXML Controller class
@@ -47,6 +55,20 @@ public class ArticleController implements Initializable {
     private Button btnaff;
     @FXML
     private Button upload;
+    @FXML
+    private ComboBox<String> catcombo;
+    @FXML
+    private Label erreurref;
+    @FXML
+    private Label erreurstock;
+    @FXML
+    private Label erreurnom;
+    @FXML
+    private Label erreurprix;
+    @FXML
+    private Label erreurimg;
+    @FXML
+    private Label erreurdesc;
 
     /**
      * Initializes the controller class.
@@ -54,19 +76,62 @@ public class ArticleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        categorieService cs=new categorieService();
+        ObservableList<categorie> l= cs.afficherCategorie();
+        ObservableList<String> nc = FXCollections.observableArrayList();
+            for (categorie category : l) {
+                String s=category.getId()+":"+category.getNom_c() ;
+                 nc.add(s);
+            }
+            catcombo.setItems(nc);
+            catcombo.setValue(nc.get(0));
+             prixa.setText("0");
+            sa.setText("0");
+            refa.setText("0");
     }    
-
+public boolean estAlpha(String chaine) {
+            return chaine.matches("[a-zA-Z]+");
+        }
+public boolean testpos(float d){
+            if(d>1&&d!=0){
+                return true;
+            }else return false;
+           
+        }
     @FXML
     private void ajoutarticle(ActionEvent event) {
+        erreurdesc.setText("");
+        erreurnom.setText("");
+        erreurprix.setText("");
+        erreurstock.setText("");
+        
+        
+        
      int ref_article=Integer.parseInt(refa.getText());
         String nom_article = noma.getText();
         String description = dsea.getText();
      int prix=   Integer.parseInt(prixa.getText());
         String image = imagea.getText();
        int stock= Integer.parseInt(sa.getText());
-        article a = new article(ref_article,nom_article ,description, prix,image,stock);
-        articleService ps = new articleService();
-        ps.ajouterArticle(a);
+       if(!noma.getText().isEmpty()&&!prixa.getText().isEmpty()&&!dsea.getText().isEmpty()&&!imagea.getText().isEmpty()&&!sa.getText().isEmpty()&&!refa.getText().isEmpty())
+       {
+            article a = new article(ref_article,nom_article ,description, prix,image,stock);
+            articleService ps = new articleService();
+            ps.ajouterArticle(a);
+       }
+       if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
+           erreurnom.setText("not NULL");
+       }
+       if(!estAlpha(dsea.getText())&&dsea.getText().isEmpty()){
+                erreurdesc.setText("seulement des alphabets");
+            }
+        if(dsea.getText().length()<10&&dsea.getText().isEmpty()){
+                erreurdesc.setText("il faut un nombre de caractere sup a 10");
+            }
+         if(!estAlpha(dsea.getText())&&dsea.getText().length()<10&&dsea.getText().isEmpty()){
+                erreurdesc.setText("seulement des alphabets et un nombre de caractere sup a 10");
+            }
+         
     }
 
     @FXML
@@ -85,14 +150,7 @@ public class ArticleController implements Initializable {
 
     @FXML
     private void uploadimg(ActionEvent event) {
-          final FileChooser fileChooser = new FileChooser(); 
-        final Stage stage = null;
-
-        File file = fileChooser.showOpenDialog(stage); 
-        if (file != null) { 
-            imagea.setText(file.getName()); 
-              File selectedFile = file;
-        }
+       
     }
     
 }

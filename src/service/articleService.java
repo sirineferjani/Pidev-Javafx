@@ -98,5 +98,26 @@ public class articleService {
             System.out.println(ex.getMessage());
         }
     }
+         
+         public ObservableList<article> findprodbycat(int idprod){
+        ObservableList< article>prod=FXCollections.observableArrayList();
+        String sql="select * from article where categorie_id=?";
+        PreparedStatement ste;
+        categorieService cs=new categorieService();
+        try{
+            ste=cnx.prepareStatement(sql);
+            ste.setInt(1, idprod);
+            ResultSet rs= ste.executeQuery();
+            while(rs.next()){
+                article c=new article();
+                prod.add(c);
+            }
+           
+           
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return prod;
+    }
 
 }

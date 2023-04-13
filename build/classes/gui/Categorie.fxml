@@ -5,14 +5,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui.CategorieController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategorieController">
    <children>
-      <Label layoutX="95.0" layoutY="85.0" prefHeight="17.0" prefWidth="102.0" text="Nom catégorie:" />
-      <TextField fx:id="nomc" layoutX="197.0" layoutY="81.0" />
-      <Label layoutX="95.0" layoutY="144.0" prefHeight="17.0" prefWidth="83.0" text="Image:" />
-      <TextField fx:id="imagec" layoutX="197.0" layoutY="140.0" />
+      <Label layoutX="95.0" layoutY="98.0" prefHeight="17.0" prefWidth="102.0" text="Nom catégorie:" />
+      <TextField fx:id="nomc" layoutX="197.0" layoutY="96.0" />
+      <Label layoutX="95.0" layoutY="154.0" prefHeight="17.0" prefWidth="83.0" text="Image:" />
+      <TextField fx:id="imagec" layoutX="197.0" layoutY="152.0" />
       <Button fx:id="btn" layoutX="212.0" layoutY="218.0" mnemonicParsing="false" onAction="#ajoutcat" text="Enregistrer" />
-      <Button fx:id="uploadimg" layoutX="399.0" layoutY="140.0" mnemonicParsing="false" onAction="#uploadimgc" prefHeight="25.0" prefWidth="102.0" text="upload" />
+      <Button fx:id="uploadimg" layoutX="399.0" layoutY="152.0" mnemonicParsing="false" onAction="#uploadimgc" prefHeight="25.0" prefWidth="102.0" text="upload" />
+      <Label fx:id="nomerreur" layoutX="198.0" layoutY="121.0" textFill="RED" />
+      <Label fx:id="imgerreur" layoutX="198.0" layoutY="177.0" textFill="RED" />
    </children>
 </AnchorPane>
