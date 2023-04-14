@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -17,9 +18,13 @@
       <TextField fx:id="nameField" layoutX="10.0" layoutY="187.0" promptText="Nom" styleClass="border" stylesheets="@../../../../../style.css" />
       <TextField fx:id="emailField" layoutX="10.0" layoutY="228.0" promptText="\@ E-mail" styleClass="border" stylesheets="@../../../../../style.css" />
       <TextField fx:id="addressField" layoutX="209.0" layoutY="228.0" promptText="Adresse" styleClass="border" stylesheets="@../../../../../style.css" />
-      <Button fx:id="saveButton" layoutX="421.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="26.0" prefWidth="110.0" styleClass="button-style" stylesheets="@../../../../../style.css" text="Valider" />
+      <Button fx:id="saveButton" layoutX="370.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="48.0" prefWidth="99.0" styleClass="button-style" stylesheets="@../../../../../style.css" text="Valider" />
       <PasswordField fx:id="PasswordField" layoutX="209.0" layoutY="187.0" promptText="Mot De Passe" styleClass="border" stylesheets="@../../../../../style.css" />
-      <Button fx:id="update" layoutX="412.0" layoutY="104.0" mnemonicParsing="false" onAction="#eklebAction" prefHeight="48.0" prefWidth="138.0" styleClass="button-style" stylesheets="@../../../../../style.css" text="Modifier " />
+      <Button fx:id="update" layoutX="412.0" layoutY="118.0" mnemonicParsing="false" onAction="#eklebAction" prefHeight="34.0" prefWidth="138.0" stylesheets="@../../../../../style.css" text="Modifier ">
+         <styleClass>
+            <String fx:value="button-styleup" />
+            <String fx:value="button-style" />
+         </styleClass></Button>
       <ImageView fitHeight="92.0" fitWidth="569.0" pickOnBounds="true">
          <image>
             <Image url="@../images/backg.jpg" />
@@ -28,11 +33,6 @@
       <ImageView fitHeight="92.0" fitWidth="100.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logo%20(3).png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="228.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/user.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="32.0" fitWidth="28.0" layoutX="521.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -82,7 +82,7 @@
             <Image url="@../images/online-shopping.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="59.0" fitWidth="66.0" layoutX="66.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="59.0" fitWidth="66.0" layoutX="70.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/event.png" />
          </image>
@@ -90,5 +90,6 @@
       <Label layoutX="63.0" layoutY="356.0" prefHeight="20.0" prefWidth="99.0" styleClass="myLabel" stylesheets="@../../../../../style.css" text="Evenements" />
       <Label layoutX="430.0" layoutY="356.0" prefHeight="20.0" prefWidth="92.0" styleClass="myLabel" stylesheets="@../../../../../style.css" text="Activités" />
       <Label layoutX="253.0" layoutY="356.0" prefHeight="20.0" prefWidth="99.0" styleClass="myLabel" stylesheets="@../../../../../style.css" text="Boutiques" />
+      <ImageView fx:id="imageLogged" fitHeight="123.0" fitWidth="138.0" layoutX="238.0" layoutY="31.0" pickOnBounds="true" />
    </children>
 </AnchorPane>

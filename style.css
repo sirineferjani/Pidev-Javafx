@@ -1,8 +1,14 @@
 
+.button-styleup {
+    -fx-background-color:	rgb(255,127,80);/* couleur de fond */
+    -fx-text-fill: white; /* couleur du texte */
+    -fx-font-size: 7pt; /* taille de la police */
+    -fx-padding: 10px 20px; /* marge interne */
+}
 .button-style {
     -fx-background-color:rgb(135,206,250);/* couleur de fond */
     -fx-text-fill: white; /* couleur du texte */
-    -fx-font-size: 14pt; /* taille de la police */
+    -fx-font-size: 7pt; /* taille de la police */
     -fx-padding: 10px 20px; /* marge interne */
 }
 .button-style2 {
@@ -11,7 +17,12 @@
     -fx-font-size: 10pt; /* taille de la police */
     -fx-padding: 10px 20px; /* marge interne */
 }
-
+.button-stylelogout {
+    -fx-background-color: red;/* couleur de fond */
+    -fx-text-fill: white; /* couleur du texte */
+    -fx-font-size: 7pt; /* taille de la police */
+    -fx-padding: 10px 20px; /* marge interne */
+}
 .transparent {
     -fx-background-color: rgba(0,0,0,0) ;/* couleur de fond */
     
