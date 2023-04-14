@@ -70,15 +70,14 @@ public class ProfileuserController implements Initializable {
     private Button saveButton;
 
     private user loggedInUser;
-
-    public void setUserData(user user) throws IOException {
-        loggedInUser = user;
-        nameLabel.setText(loggedInUser.getNom());
-        Labelemail.setText(loggedInUser.getEmail());
-        adressLabel.setText(loggedInUser.getPrenom());
-
+    
+        public void setUserData(user user) throws IOException {
+    loggedInUser = user;
+    nameLabel.setText(loggedInUser.getNom());
+    Labelemail.setText(loggedInUser.getEmail());
+    adressLabel.setText(loggedInUser.getPrenom());
+  
     }
-
     @FXML
     private void handleSaveButtonAction(ActionEvent event) throws SQLException {
 

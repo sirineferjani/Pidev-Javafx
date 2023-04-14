@@ -11,10 +11,10 @@ package tn.edu.esprit.entities;
  */
 public class user {
     private int id;
-    private String nom, prenom ,password ,role ,email;
-    byte[] image;
+    private String nom, prenom ,password ,role ,email,image;
+ 
 
-    public user(String nom, String prenom, String password, String email, byte[] image) {
+    public user(String nom, String prenom, String password, String email, String image) {
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
@@ -22,7 +22,8 @@ public class user {
         this.image = image;
     }
 
-    public user(String nom, String prenom, String password, String role, String email, byte[] image) {
+    public user(int id, String nom, String prenom, String password, String role, String email,String image) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
@@ -31,27 +32,26 @@ public class user {
         this.image = image;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
+    public user(String nom, String prenom, String password, String role, String email, String image) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.password = password;
+        this.role = role;
+        this.email = email;
         this.image = image;
     }
-   
+
+    public user(String alice, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
     public String getRole() {
         return role;
     }
 
-    public user(String nom, String prenom, String password, String role, String email) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.password = password;
-        this.role = role;
-        this.email = email;
-    }
-
+  
     public String getEmail() {
         return email;
     }
@@ -120,6 +120,21 @@ public class user {
         this.password = password;
         this.role = role;
         this.email = email;
+    }
+
+    public user(String nom, String prenom, String password, String email) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.password = password;
+        this.email = email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
    

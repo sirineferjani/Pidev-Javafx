@@ -89,9 +89,9 @@
             </Pane>
          </children>
       </VBox>
-      <Button fx:id="btnAjouterPhoto" layoutX="338.0" layoutY="300.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="37.0" prefWidth="81.0" styleClass="button-style2" stylesheets="@../../../../../style.css" text="image" />
+      <Button fx:id="btnAjouterPhoto" layoutX="338.0" layoutY="300.0" mnemonicParsing="false" onAction="#uploadimgeUser" prefHeight="37.0" prefWidth="81.0" styleClass="button-style2" stylesheets="@../../../../../style.css" text="image" />
       <ImageView fitHeight="124.0" fitWidth="143.0" layoutX="488.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView" fitHeight="71.0" fitWidth="143.0" layoutX="449.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="imageUser" layoutX="441.0" layoutY="308.0" />
     
 
    

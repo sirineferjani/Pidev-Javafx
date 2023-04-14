@@ -17,6 +17,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -40,6 +44,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import tn.edu.esprit.utils.Statics;
+
 import tn.edu.esprit.entities.user;
 import tn.edu.esprit.services.ServicePersonne;
 
@@ -66,10 +72,15 @@ public class RegisterUserController implements Initializable {
     private   PasswordField tfMotDePasse;
      @FXML
     private   TextField tfemail;
-        @FXML
+     @FXML
      private ImageView imageView;
-          @FXML
+     @FXML
     private Label ImageName;
+     @FXML
+    private TextField imageUser;
+    private File selectedFile=null;
+       @FXML
+    private   TextField tfimage;
    
     /**
      * Initializes the controller class.
@@ -162,31 +173,33 @@ private void ajouterPersonne(ActionEvent event) throws IOException {
         return;
     }
 
-    // Vérifie si l'utilisateur a sélectionné une image
-    if (imageView.getImage() == null) {
-        Alert alert = new Alert(AlertType.WARNING, "Please select an image.");
-        alert.showAndWait();
-        return;
-    }
+   
 
     try {
         ServicePersonne sp = new ServicePersonne();
         String hashedPassword = hashPassword(tfMotDePasse.getText());
-
+         int randomize = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+         String newFileName = randomize+"-"+selectedFile.getName();
         // Sélectionne l'image et la charge dans l'élément ImageView de votre FXML
-        choisirImage(event);
+       // choisirImage(event);
 
         // Convertit l'image en un tableau de bytes pour le stockage dans la base de données
-        byte[] imageBytes = null;
+        /*byte[] imageBytes = null;
         if (imageView.getImage() != null) {
             BufferedImage bImage = SwingFXUtils.fromFXImage(imageView.getImage(), null);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(bImage, "jpg", baos);
             imageBytes = baos.toByteArray();
-        }
+        }*/
 
-       user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword , tfemail.getText(), imageBytes);
-        
+       //user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword , tfemail.getText(), imageBytes);
+       user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword , tfemail.getText() ,newFileName );
+        Path sourceFile = Paths.get(selectedFile.toPath().toString());
+        Path targetFile = Paths.get("C:/imagepi/" + newFileName);
+
+
+//
+        Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
         
         sp.ajouter(p);
         Alert a = new Alert(Alert.AlertType.INFORMATION, "Personne added !", ButtonType.OK);
@@ -234,7 +247,19 @@ private void ajouterPersonne(ActionEvent event) throws IOException {
     stage.setScene(scene);
     stage.show();
 }
-      @FXML
+   @FXML
+private void uploadimgeUser(ActionEvent event) {
+    final FileChooser fileChooser = new FileChooser();
+    final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+    File file = fileChooser.showOpenDialog(stage); 
+    if (file != null) { 
+        imageUser.setText(file.getName()); 
+        selectedFile = file;
+    }
+}
+
+   /*   @FXML
 private void choisirImage(ActionEvent event) {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Choisir une image");
@@ -252,7 +277,10 @@ private void choisirImage(ActionEvent event) {
             a.showAndWait();
         }
     }
-}}
+}*/
+   
+   
+   }
 
   
   /* fel fxml <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="343.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />

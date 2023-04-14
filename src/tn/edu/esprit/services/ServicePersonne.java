@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
@@ -50,7 +52,7 @@ public class ServicePersonne implements IService<user>{
     ps.setString(3, p.getPassword());
     ps.setString(4, "User");
     ps.setString(5, p.getEmail());
-    ps.setBytes(6, p.getImage());
+    ps.setString(6, p.getImage());
     ps.executeUpdate();
 }
 
@@ -160,7 +162,7 @@ public class ServicePersonne implements IService<user>{
 }*/
     
     
-     public user getUserByEmail2(String email) throws SQLException {
+  public user getUserByEmail2(String email) throws SQLException {
     user user =null; //La ligne User user = null; sert simplement à initialiser la variable user à null.
      //Cette variable est ensuite utilisée pour stocker les informations de l'utilisateur récupéré depuis la base de données.
 
@@ -176,13 +178,16 @@ public class ServicePersonne implements IService<user>{
                         rs.getString("adresse"),
                         rs.getString("password"),
                          rs.getString("role"),
-                        rs.getString("email"));
+                        rs.getString("email"),
+                         rs.getString("image"));
+                        
             }
         }
     
     return user;
 }
-     
+   
+
        public void updateUser(user user) throws SQLException {
         String req = "UPDATE users SET nom = ?, email = ?, prenom = ? WHERE id = ?";
        PreparedStatement ps = ds.getCnx().prepareStatement(req);
@@ -191,6 +196,43 @@ public class ServicePersonne implements IService<user>{
         ps.setString(3, user.getPrenom());
         ps.setInt(4, user.getId());
         ps.executeUpdate();
+    }
+       
+       
+         public ObservableList<user> afficherusers() {
+       ObservableList<user> myList= FXCollections.observableArrayList();
+        
+    
+        try {
+            String sql = "SELECT * FROM personne WHERE role = 'User'";
+            Statement ste=ds.getCnx().createStatement();
+            ResultSet rs= ste.executeQuery(sql);
+            while(rs.next()){
+                 user p = new user();
+                 p.setId(rs.getInt(1));
+                 p.setNom(rs.getString("nom")); 
+                 p.setEmail(rs.getString("email"));
+                 p.setPrenom(rs.getString("adresse"));
+                 p.setImage(rs.getString("image"));
+         
+                myList.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+    }
+         
+     public void supprimeruser(user us) {
+        try {
+            String req = "DELETE FROM `personne` WHERE id = ?";
+            PreparedStatement ste=ds.getCnx().prepareStatement(req);
+            ste.setInt(1, us.getId());
+            ste.executeUpdate();
+            System.out.println("user supprimé !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
    /*  public user getUserByEmail(String email) throws SQLException {
     user user =null; //La ligne User user = null; sert simplement à initialiser la variable user à null.
