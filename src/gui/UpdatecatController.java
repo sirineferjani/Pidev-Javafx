@@ -16,7 +16,9 @@ import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -44,6 +46,8 @@ public class UpdatecatController implements Initializable {
     private Button btnmodifiercat;
     private File selectedFile=null;
     categorie c1;
+    @FXML
+    private Button btnaffichagecat;
 
     /**
      * Initializes the controller class.
@@ -93,6 +97,19 @@ public class UpdatecatController implements Initializable {
         fieldnom.setText(cat.getNom_c());
         filedimg.setText(cat.getImage_c());
         c1=cat;
+    }
+
+    @FXML
+    private void affichagecat(ActionEvent event) {
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CatDispaly.fxml"));
+            Parent root = loader.load();
+            
+
+          btnaffichagecat.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

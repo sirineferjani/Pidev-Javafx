@@ -20,7 +20,9 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -50,6 +52,8 @@ public class CategorieController implements Initializable {
     @FXML
     private Label imgerreur;
     private File selectedFile=null;
+    @FXML
+    private Button aff1;
 
     /**
      * Initializes the controller class.
@@ -59,15 +63,39 @@ public class CategorieController implements Initializable {
         // TODO
         
     }    
-public boolean estAlpha(String chaine) {
+          public boolean estAlpha(String chaine) {
             return chaine.matches("[a-zA-Z]+");
         }
     @FXML
     private void ajoutcat(ActionEvent event) throws IOException {
+        
+         if(nomc.getText().trim().isEmpty() || nomc.getText().length() < 3)
+        {
+        nomerreur.setText("Entrer un nom supérieur a 3 catactéres\n");
+        }
+           if(imagec.getText().trim().isEmpty())
+        {
+            imgerreur.setText("Entrer une image\n");
+        }
+             if(nomc.getText().trim().isEmpty())
+        {
+            nomerreur.setText("Entrer le nom de la catégorie");
+        }
+             if(!estAlpha(nomc.getText()))
+            {
+                nomerreur.setText("seulement des alphabets");
+            }
+            StringBuilder errors=new StringBuilder();
+        
+      
         int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-          String newFileName = random_int+"-"+selectedFile.getName();
+        String newFileName = random_int+"-"+selectedFile.getName();
         if(!nomc.getText().isEmpty()&&estAlpha(nomc.getText()))
         {String nom_c = nomc.getText();
+        if(!estAlpha(nom_c))
+        {
+            nomerreur.setText("verifier seulement des alphabets");
+        }
         String image_c = imagec.getText();
          categorie c = new categorie(nom_c,newFileName);
         categorieService cs = new categorieService();
@@ -77,12 +105,8 @@ public boolean estAlpha(String chaine) {
 //
         Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
         }
-        if(!estAlpha(nomc.getText())&&nomc.getText().isEmpty()){
-                nomerreur.setText("seulement des alphabets");
-            }
-        if(nomc.getText().isEmpty()){
-            nomerreur.setText("Not null");
-        }
+        
+      
     }
 
     @FXML
@@ -98,6 +122,19 @@ public boolean estAlpha(String chaine) {
             selectedFile = file;
         }
         
+    }
+
+    @FXML
+    private void affichagec(ActionEvent event) {
+          try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CatDispaly.fxml"));
+            Parent root = loader.load();
+            
+
+          aff1.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

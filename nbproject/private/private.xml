@@ -3,29 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/Updatecat.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/test/NewMain.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/AffarticleController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/Article.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/catfront.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/ArticleController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/entitie/categorie.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/service/articleService.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/entitie/categorie.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/ArtByCatController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/ArtByCat.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/UpdatecatController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/UpdateArticleController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/CatDispaly.fxml</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/pidev/Pidev.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/CatDispalyController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/articledisplay.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/ArticledisplayController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/entitie/article.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/Affarticle.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/service/categorieService.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/Categorie.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/test/Test.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/UpdateArticle.fxml</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/utils/DataSource.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/CategorieController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/utils/Statics.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/CatfrontController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/gui/CategorieController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/test/NewFXMain.java</file>
         </group>
     </open-files>
 </project-private>

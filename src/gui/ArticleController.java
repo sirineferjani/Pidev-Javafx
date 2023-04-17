@@ -114,7 +114,35 @@ public boolean testpos(float d){
         erreurprix.setText("");
         erreurstock.setText("");
         
-        
+         if(noma.getText().isEmpty())
+       {
+           erreurnom.setText("Entrer le nom de l'article");
+       }
+        if(refa.getText().isEmpty())
+       {
+           erreurref.setText("Entrer le nom de l'article");
+       }
+        if(prixa.getText().isEmpty())
+       {
+           erreurprix.setText("Entrer le prix de l'article");
+       }
+         if(sa.getText().isEmpty())
+       {
+           erreurstock.setText("Entrer le stock de l'article");
+       }
+        if(!estAlpha(noma.getText()))
+       {
+           erreurnom.setText("Seulement des alphabets");
+       }
+
+        if(dsea.getText().length()<10)
+        {
+                erreurdesc.setText("Il faut un nombre de caractere sup a 10");
+        }
+         if(!estAlpha(dsea.getText()))
+        {
+                erreurdesc.setText("Seulement des alphabets ");
+        }
         
         int ref_article=Integer.parseInt(refa.getText());
         String nom_article = noma.getText();
@@ -128,8 +156,7 @@ public boolean testpos(float d){
         System.out.println(sousChaine);
         cs=new categorieService();
           categorie cat2=cs.getCatParId(Integer.parseInt(sousChaine));
-       if(!noma.getText().isEmpty()&&!prixa.getText().isEmpty()&&!dsea.getText().isEmpty()&&!imagea.getText().isEmpty()&&!sa.getText().isEmpty()&&!refa.getText().isEmpty())
-       {
+      
            int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
             String newFileName = random_int+"-"+selectedFile.getName();
             article a = new article(ref_article,nom_article ,description, prix,newFileName,stock,cat2);
@@ -142,18 +169,19 @@ public boolean testpos(float d){
         } catch (IOException ex) {
             Logger.getLogger(ArticleController.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+      
+       if(!estAlpha(noma.getText()))
+       {
+           erreurnom.setText("Seulement des alphabets");
        }
-       if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
-           erreurnom.setText("not NULL");
-       }
-       if(!estAlpha(dsea.getText())&&dsea.getText().isEmpty()){
-                erreurdesc.setText("seulement des alphabets");
-            }
-        if(dsea.getText().length()<10&&dsea.getText().isEmpty()){
-                erreurdesc.setText("il faut un nombre de caractere sup a 10");
-            }
-         if(!estAlpha(dsea.getText())&&dsea.getText().length()<10&&dsea.getText().isEmpty()){
-                erreurdesc.setText("seulement des alphabets et un nombre de caractere sup a 10");
+
+        if(dsea.getText().length()<10)
+        {
+                erreurdesc.setText("Il faut un nombre de caractere sup a 10");
+        }
+         if(!estAlpha(dsea.getText())){
+                erreurdesc.setText("Seulement des alphabets ");
             }
          
     }
@@ -161,7 +189,7 @@ public boolean testpos(float d){
     @FXML
     private void afficherarticle(ActionEvent event) {
           try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Affarticle.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("articledisplay.fxml"));
             Parent root = loader.load();
             
 

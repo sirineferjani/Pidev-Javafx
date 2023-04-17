@@ -32,6 +32,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import service.categorieService;
+import utils.Statics;
 
 /**
  * FXML Controller class
@@ -60,21 +61,21 @@ public class CatDispalyController implements Initializable {
                 VBox card=new VBox();
                 card.setPrefSize(150, 150);
                 card.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
-//                ImageView imageView;
-//            try {
-//               imageView = new ImageView(new Image(new FileInputStream("ee")));
-//                imageView.setFitWidth(120);
-//                imageView.setFitHeight(80);
-//                imageView.setPreserveRatio(true);
-//                card.getChildren().add(imageView);
-//            } catch (FileNotFoundException ex) {
-//                Logger.getLogger(CatDispalyController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+                ImageView imageView;
+            try {
+               imageView = new ImageView(new Image(new FileInputStream(Statics.uploadDirectory+cat.getImage_c())));
+                imageView.setFitWidth(120);
+                imageView.setFitHeight(80);
+                imageView.setPreserveRatio(true);
+                card.getChildren().add(imageView);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(CatDispalyController.class.getName()).log(Level.SEVERE, null, ex);
+          }
             Label namelabel=new Label(cat.getNom_c());    
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
-            Button btn=new Button("Edit");
+            Button btn=new Button("Modifier");
             btn.setAlignment(Pos.TOP_RIGHT);
             btn.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn.setOnAction(e->{
@@ -87,7 +88,7 @@ public class CatDispalyController implements Initializable {
                     ucc.getdata(cat);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
-                    stage.setTitle("Edit categorie");
+                    stage.setTitle("Modifier categorie");
                     Stage stage1 = (Stage) card.getScene().getWindow();
                     stage1.close();
                     stage.show();

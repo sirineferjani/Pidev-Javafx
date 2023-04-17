@@ -79,7 +79,7 @@ public class CatfrontController implements Initializable {
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
-            card.setOnMouseClicked(e->{
+            card.setOnMouseClicked((e)->{
            
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ArtByCat.fxml"));
                 try{

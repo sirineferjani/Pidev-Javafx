@@ -8,13 +8,16 @@ package gui;
 import entitie.article;
 import entitie.categorie;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -51,6 +54,8 @@ public class UpdateArticleController implements Initializable {
     article a1;
     private File selectedFile=null;
     categorieService cs;
+    @FXML
+    private Button btnaffichage;
 
     /**
      * Initializes the controller class.
@@ -122,6 +127,19 @@ public class UpdateArticleController implements Initializable {
         String combo=a.getCategorie().getId()+":"+a.getCategorie().getNom_c();
         catcombo.setValue(combo);
         a1=a;
+    }
+
+    @FXML
+    private void affichage(ActionEvent event) {
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("articledisplay.fxml"));
+            Parent root = loader.load();
+            
+
+          btnaffichage.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }
