@@ -150,7 +150,7 @@ if (newPassword != null && !newPassword.isEmpty()) {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML
+   /* @FXML
 private void handleLogoutButtonAction(ActionEvent event) throws IOException {
     // Réinitialiser l'utilisateur actuellement connecté
     loggedInUser = null;
@@ -163,5 +163,5 @@ private void handleLogoutButtonAction(ActionEvent event) throws IOException {
     stage.setScene(scene);
     stage.show();
 }
-
+*/
 }
