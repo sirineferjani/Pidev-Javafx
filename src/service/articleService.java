@@ -30,7 +30,7 @@ public class articleService {
   public void ajouterArticle(article a) {
     try { 
         String requete = "INSERT INTO article(ref_article,nom_article,description,prix,image,stock,categories_id)"+" VALUES (?,?,?,?,?,?,?)";
-        PreparedStatement pst = new DataSource().getCnx().prepareStatement(requete);
+        PreparedStatement pst = cnx.prepareStatement(requete);
         pst.setObject(1, a.getRef_article());
         pst.setString(2, a.getNom_article());
         pst.setString(3, a.getDescription());
@@ -107,7 +107,7 @@ public class articleService {
          
          public ObservableList<article> findprodbycat(int idprod){
         ObservableList< article>prod=FXCollections.observableArrayList();
-        String sql="select * from article where categories_id=?";
+        String sql="select * from article where categories_id =?";
         PreparedStatement ste;
         categorieService cs=new categorieService();
         try{
@@ -115,7 +115,7 @@ public class articleService {
             ste.setInt(1, idprod);
             ResultSet rs= ste.executeQuery();
             while(rs.next()){
-                article c=new article();
+                article c=new article(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getInt(7),cs.getCatParId(rs.getInt(8)));
                 prod.add(c);
             }
            

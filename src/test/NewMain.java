@@ -31,6 +31,7 @@ public class NewMain {
     
       //cs.ajouterCategorie(c);
       //cs.supprimerCategorie(53);
+        System.out.println(as.findprodbycat(20));
     }
     
 }

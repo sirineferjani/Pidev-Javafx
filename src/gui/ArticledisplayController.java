@@ -50,7 +50,7 @@ public class ArticledisplayController implements Initializable {
     //List<article>listprod=new ArrayList();
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -84,7 +84,7 @@ public class ArticledisplayController implements Initializable {
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
-            Button btn=new Button("Edit");
+            Button btn=new Button("Modifier");
             btn.setAlignment(Pos.TOP_RIGHT);
             btn.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn.setOnAction(e->{
@@ -97,7 +97,7 @@ public class ArticledisplayController implements Initializable {
                             uac.recupdata(art);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
-                    stage.setTitle("Edit artegorie");
+                    stage.setTitle("Modifier artegorie");
                     Stage stage1 = (Stage) card.getScene().getWindow();
                     stage1.close();
                     stage.show();
@@ -123,13 +123,7 @@ public class ArticledisplayController implements Initializable {
             articlepane.setMargin(card, new Insets(5, 5, 5, 5));
      }}
     
-    private void showProductDetails(article a) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Product Details");
-    alert.setHeaderText(a.getNom_article());
-    alert.setContentText("Description: " + a.getDescription() + "\nPrix: " +a.getPrix()+"DT"+"\nQuantite:"+ a.getStock()+"\nNote:"+a.getNote());
-    alert.show();
-}
+   
 
     
 }

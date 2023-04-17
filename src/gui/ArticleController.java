@@ -95,18 +95,16 @@ public class ArticleController implements Initializable {
             catcombo.setItems(nc);
             catcombo.setValue(nc.get(0));
              prixa.setText("0");
-            sa.setText("0");
-            refa.setText("0");
+             sa.setText("0");
+             refa.setText("0");
     }    
 public boolean estAlpha(String chaine) {
             return chaine.matches("[a-zA-Z]+");
         }
-public boolean testpos(float d){
-            if(d>1&&d!=0){
-                return true;
-            }else return false;
-           
-        }
+//public boolean testpos(float d){
+//          if(d>1&&d!=0){
+//            return true;
+//      }else return false;}
     @FXML
     private void ajoutarticle(ActionEvent event) {
         erreurdesc.setText("");
@@ -157,7 +155,7 @@ public boolean testpos(float d){
         cs=new categorieService();
           categorie cat2=cs.getCatParId(Integer.parseInt(sousChaine));
       
-           int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+            int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
             String newFileName = random_int+"-"+selectedFile.getName();
             article a = new article(ref_article,nom_article ,description, prix,newFileName,stock,cat2);
             articleService ps = new articleService();
@@ -203,7 +201,7 @@ public boolean testpos(float d){
     @FXML
     private void uploadimg(ActionEvent event) {
          final FileChooser fileChooser = new FileChooser(); //outil eli nekhdhou bih el fichier
-        final Stage stage = null;// el fenetre eli bech tethal
+        final Stage stage = null;
 
         File file = fileChooser.showOpenDialog(stage); //halina el fenetre w recuperina el fichier
         if (file != null) { //ntestiow est ce que fichier null wale

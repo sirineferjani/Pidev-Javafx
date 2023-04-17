@@ -6,10 +6,10 @@
 package gui;
 
 import entitie.categorie;
-import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -79,17 +79,16 @@ public class CatfrontController implements Initializable {
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
-            card.setOnMouseClicked((e)->{
-           
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ArtByCat.fxml"));
+            card.setOnMouseClicked((MouseEvent e) -> {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ArtByCat.fxml"));
                 try{
                     Parent root = loader.load();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setTitle("Article");
-                    ArtByCatController pbcc=loader.getController();
-                    //DisplayProductController dpc=loader.getController();
-                    pbcc.cat(cat.getId());
+                    System.out.println(cat.getId());
+                    ArtByCatController abcc=loader.getController();
+                    abcc.cat(cat.getId());
                     Stage stage1 = (Stage) card.getScene().getWindow();
                     stage1.close();
                             stage.show();

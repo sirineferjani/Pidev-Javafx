@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui.ArticledisplayController">
+<AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArticledisplayController">
    <children>
-      <FlowPane fx:id="articlepane" layoutX="120.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="70.0" layoutX="-9.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="611.0" />
+      <FlowPane fx:id="articlepane" layoutX="62.0" layoutY="82.0" prefHeight="294.0" prefWidth="449.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="82.0" />
+      <ImageView fitHeight="82.0" fitWidth="90.0" layoutX="-9.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/logo%20(3).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="173.0" layoutY="8.0" prefHeight="54.0" prefWidth="313.0" text="Liste des articles">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

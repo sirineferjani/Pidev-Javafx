@@ -29,7 +29,7 @@ public class categorieService {
   public void ajouterCategorie(categorie c) {
     try { 
         String requete = "INSERT INTO categorie(nom_c,image_c)"+" VALUES (?,?)";
-        PreparedStatement pst = new DataSource().getCnx().prepareStatement(requete);
+        PreparedStatement pst = cnx.prepareStatement(requete);
     
        
         pst.setString(1, c.getNom_c());

@@ -6,28 +6,68 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategorieController">
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategorieController">
    <children>
-      <Label layoutX="95.0" layoutY="98.0" prefHeight="17.0" prefWidth="102.0" text="Nom catégorie:" />
-      <TextField fx:id="nomc" layoutX="197.0" layoutY="96.0" styleClass="border" stylesheets="@../../build/style.css" />
-      <Label layoutX="95.0" layoutY="154.0" prefHeight="17.0" prefWidth="83.0" text="Image:" />
-      <TextField fx:id="imagec" layoutX="197.0" layoutY="152.0" styleClass="border" stylesheets="@../../build/style.css" />
-      <Button fx:id="btn" layoutX="212.0" layoutY="218.0" mnemonicParsing="false" onAction="#ajoutcat" styleClass="button-style" stylesheets="@../../build/style.css" text="Enregistrer" />
-      <Button fx:id="uploadimg" layoutX="399.0" layoutY="152.0" mnemonicParsing="false" onAction="#uploadimgc" prefHeight="25.0" prefWidth="102.0" text="upload" />
-      <Label fx:id="nomerreur" layoutX="198.0" layoutY="121.0" textFill="RED" />
-      <Label fx:id="imgerreur" layoutX="198.0" layoutY="177.0" textFill="RED" />
-      <Button fx:id="aff1" layoutX="368.0" layoutY="218.0" mnemonicParsing="false" onAction="#affichagec" styleClass="button-style" stylesheets="@../../build/style.css" text="Afficher" />
-      <Label layoutX="96.0" layoutY="17.0" prefHeight="47.0" prefWidth="305.0" text="Ajout d'une catégorie" textFill="#0dd5e0">
+      <ImageView fitHeight="475.0" fitWidth="743.0" layoutX="-4.0" layoutY="81.0" opacity="0.53" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/camping-en-famille.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="83.0" layoutX="-5.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="713.0" />
+      <Label layoutX="191.0" layoutY="168.0" prefHeight="21.0" prefWidth="126.0" text="Nom catégorie:">
          <font>
-            <Font size="27.0" />
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="nomc" layoutX="326.0" layoutY="167.0" />
+      <Label layoutX="193.0" layoutY="232.0" prefHeight="21.0" prefWidth="102.0" text="Image:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="imagec" layoutX="326.0" layoutY="228.0" />
+      <Button fx:id="btn" layoutX="294.0" layoutY="342.0" mnemonicParsing="false" onAction="#ajoutcat" prefHeight="51.0" prefWidth="149.0" style="-fx-background-color: b1d9ff;" text="Ajouter" />
+      <Button fx:id="uploadimg" layoutX="486.0" layoutY="228.0" mnemonicParsing="false" onAction="#uploadimgc" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: b1d9ff;" text="upload" />
+      <Label fx:id="nomerreur" layoutX="332.0" layoutY="200.0" prefHeight="17.0" prefWidth="142.0" textFill="RED" />
+      <Label fx:id="imgerreur" layoutX="333.0" layoutY="265.0" prefHeight="17.0" prefWidth="136.0" textFill="RED" />
+      <Button fx:id="aff1" layoutX="479.0" layoutY="342.0" mnemonicParsing="false" onAction="#affichagec" prefHeight="51.0" prefWidth="168.0" style="-fx-background-color: b1d9ff;" text="Afficher" />
+      <Label layoutX="173.0" layoutY="17.0" prefHeight="51.0" prefWidth="436.0" text="Ajout d'une catégorie" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <ImageView fitHeight="89.0" fitWidth="83.0" layoutX="10.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="89.0" fitWidth="83.0" layoutX="-2.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/logo%20(3).png" />
          </image>
       </ImageView>
+      <GridPane layoutY="85.0" prefHeight="386.0" prefWidth="136.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="136.0" style="-fx-background-color: b1d9ff;" text="Gestion des articles">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="156.0" style="-fx-background-color: b1d9ff;" text="Gestion des catégories" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

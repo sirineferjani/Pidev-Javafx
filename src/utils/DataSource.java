@@ -14,13 +14,14 @@ import java.sql.SQLException;
  * @author user
  */
 public class DataSource {
-        private Connection cnx;
+
+    private Connection cnx;
     private static DataSource instance;
- private String url = "jdbc:mysql://localhost:3306/atp";
+    private String url = "jdbc:mysql://localhost:3306/atp";
     private String username = "root";
     private String password = "";
-   
-    public DataSource() {
+
+    private DataSource() {
         try {
             cnx = DriverManager.getConnection(url, username, password);
             System.out.println("Connected !");
@@ -30,14 +31,14 @@ public class DataSource {
     }
 
     public static DataSource getInstance() {
-        if(instance == null)
+        if (instance == null) {
             instance = new DataSource();
+        }
         return instance;
     }
 
     public Connection getCnx() {
         return cnx;
     }
-    
-    
+
 }
