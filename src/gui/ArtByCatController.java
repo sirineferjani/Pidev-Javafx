@@ -8,6 +8,7 @@ package gui;
 import entitie.article;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -20,6 +21,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +31,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 import service.articleService;
 import utils.Statics;
 
@@ -93,6 +97,22 @@ public class ArtByCatController implements Initializable {
                 dispo.setAlignment(Pos.CENTER);
                 dispo.setTextFill(Color.GREEN);
                 card.getChildren().add(dispo);
+                card.setOnMouseClicked((MouseEvent e) ->{
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Detailart.fxml"));
+                try{
+                    Parent root = loader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Detail Article");
+                    DetailartController dpc=loader.getController();
+                    dpc.setlabelprod(a);
+                    Stage stage1 = (Stage) card.getScene().getWindow();
+                    stage1.close();
+                            stage.show();
+                }catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            });
             }
             Label catLabel=new Label(a.getCategorie().getNom_c());
             catLabel.setAlignment(Pos.CENTER);

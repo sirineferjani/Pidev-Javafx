@@ -60,9 +60,9 @@
             <Font name="System Bold" size="15.0" />
          </font></Label>
       <Label fx:id="erreurref" layoutX="309.0" layoutY="160.0" prefHeight="17.0" prefWidth="136.0" textFill="RED" />
-      <Label fx:id="erreurstock" layoutX="540.0" layoutY="159.0" prefHeight="17.0" prefWidth="123.0" textFill="RED" />
+      <Label fx:id="erreurstock" layoutX="540.0" layoutY="159.0" prefHeight="17.0" prefWidth="168.0" textFill="RED" />
       <Label fx:id="erreurnom" layoutX="317.0" layoutY="225.0" prefHeight="17.0" prefWidth="136.0" textFill="RED" />
-      <Label fx:id="erreurprix" layoutX="541.0" layoutY="222.0" prefHeight="17.0" prefWidth="112.0" textFill="RED" />
+      <Label fx:id="erreurprix" layoutX="541.0" layoutY="222.0" prefHeight="17.0" prefWidth="178.0" textFill="RED" />
       <Label fx:id="erreurimg" layoutX="311.0" layoutY="383.0" prefHeight="17.0" prefWidth="136.0" textFill="RED" />
       <Label fx:id="erreurdesc" layoutX="292.0" layoutY="302.0" prefHeight="17.0" prefWidth="150.0" textFill="RED" />
       <Label layoutX="224.0" layoutY="11.0" prefHeight="45.0" prefWidth="303.0" text="Ajout d'un article" textAlignment="RIGHT" textFill="#000303" textOverrun="CLIP">

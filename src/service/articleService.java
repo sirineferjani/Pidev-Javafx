@@ -125,6 +125,39 @@ public class articleService {
         }
         return prod;
     }
+            public List<article> Rechercher(String critere,String rec) {
+      
+        List<article> Articles = new ArrayList();
+    
+        try {
+        Statement stm =cnx.createStatement();
+        String querry ="SELECT * FROM article where "+critere+" like '"+rec+"%'";
+     
+        ResultSet rs= stm.executeQuery(querry);
+        
+        while(rs.next()){
+            article A = new article();
+    
+      A.setNom_article(rs.getString(1));
+      A.setDescription(rs.getString(2));
+      A.setPrix(rs.getInt(3));
+      A.setImage(rs.getString(4));
+      A.setStock(rs.getInt(5));
+
+            
+            
+            
+            Articles.add(A);
+        }
+        
+    } catch (SQLException ex) {
+            System.out.println(ex.getMessage()); 
+    
+    }
+   
+        return Articles;
+   
+    }
  
 
 }

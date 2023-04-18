@@ -9,6 +9,7 @@ import entitie.article;
 import entitie.categorie;
 import java.io.File;
 import java.io.IOException;
+import static java.lang.Float.isNaN;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -101,6 +102,18 @@ public class ArticleController implements Initializable {
 public boolean estAlpha(String chaine) {
             return chaine.matches("[a-zA-Z]+");
         }
+        public boolean testpos(float d){
+            if(d>1&&d!=0){
+                return true;
+            }else return false;
+            
+        }
+public boolean estUnNombre(int p) {
+  if (isNaN(p)) {
+    return false;
+  }
+  return true;
+}
 //public boolean testpos(float d){
 //          if(d>1&&d!=0){
 //            return true;
@@ -111,36 +124,7 @@ public boolean estAlpha(String chaine) {
         erreurnom.setText("");
         erreurprix.setText("");
         erreurstock.setText("");
-        
-         if(noma.getText().isEmpty())
-       {
-           erreurnom.setText("Entrer le nom de l'article");
-       }
-        if(refa.getText().isEmpty())
-       {
-           erreurref.setText("Entrer le nom de l'article");
-       }
-        if(prixa.getText().isEmpty())
-       {
-           erreurprix.setText("Entrer le prix de l'article");
-       }
-         if(sa.getText().isEmpty())
-       {
-           erreurstock.setText("Entrer le stock de l'article");
-       }
-        if(!estAlpha(noma.getText()))
-       {
-           erreurnom.setText("Seulement des alphabets");
-       }
-
-        if(dsea.getText().length()<10)
-        {
-                erreurdesc.setText("Il faut un nombre de caractere sup a 10");
-        }
-         if(!estAlpha(dsea.getText()))
-        {
-                erreurdesc.setText("Seulement des alphabets ");
-        }
+ if(estAlpha(noma.getText())&& dsea.getText().length()>=10 && testpos(Integer.parseInt(prixa.getText())) && testpos(Float.parseFloat(sa.getText())) && Integer.parseInt(sa.getText())!=0 && !imagea.getText().isEmpty()){
         
         int ref_article=Integer.parseInt(refa.getText());
         String nom_article = noma.getText();
@@ -166,21 +150,47 @@ public boolean estAlpha(String chaine) {
             Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(ArticleController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-      
-       if(!estAlpha(noma.getText()))
-       {
-           erreurnom.setText("Seulement des alphabets");
-       }
-
-        if(dsea.getText().length()<10)
-        {
-                erreurdesc.setText("Il faut un nombre de caractere sup a 10");
-        }
-         if(!estAlpha(dsea.getText())){
-                erreurdesc.setText("Seulement des alphabets ");
+        } }
+    else{
+/*            if(!estUnNombre(Integer.parseInt(refa.getText()))){
+                erreurref.setText("seulement des nombres");
+            }*/
+            if(imagea.getText().isEmpty()){
+                erreurimg.setText("veuillez choisir une image");
             }
+            if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
+                erreurnom.setText("seulement des alphabets");
+            }
+            if(!estAlpha(dsea.getText())&&dsea.getText().length()<10&&dsea.getText().isEmpty()){
+                erreurdesc.setText("seulement des alphabets et un nombre de caractere sup a 10");
+            }
+            if(!estAlpha(dsea.getText())&&dsea.getText().isEmpty()){
+                erreurdesc.setText("seulement des alphabets");
+            }
+            if(dsea.getText().length()<10&&dsea.getText().isEmpty()){
+                erreurdesc.setText("il faut un nombre de caractere sup a 10");
+            }
+        
+            String hh=prixa.getText();
+            hh+="0";
+            if(!testpos(Integer.parseInt(hh))||prixa.getText().isEmpty()){
+                erreurprix.setText("il faut un prix positif");
+            }
+            String xx=sa.getText();
+            xx+="0";
+            if(!testpos(Integer.parseInt(xx))&&Integer.parseInt(xx)==0||sa.getText().isEmpty()){
+               erreurstock.setText("il faut une quantite positif et quantite sup a 0");
+            }
+            
+            if(!testpos(Integer.parseInt(xx))||sa.getText().isEmpty()){
+                erreurstock.setText("il faut une quantite positif"); 
+            }
+            if(Integer.parseInt(xx)==0||sa.getText().isEmpty()){
+                erreurstock.setText("quantite sup a 0");
+            }
+            
+        }
+
          
     }
 

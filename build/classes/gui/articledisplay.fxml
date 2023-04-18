@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +13,7 @@
 <AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArticledisplayController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="70.0" layoutX="-9.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="611.0" />
-      <FlowPane fx:id="articlepane" layoutX="62.0" layoutY="82.0" prefHeight="294.0" prefWidth="449.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="82.0" />
+      <FlowPane fx:id="articlepane" layoutX="14.0" layoutY="122.0" prefHeight="329.0" prefWidth="569.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="122.0" />
       <ImageView fitHeight="82.0" fitWidth="90.0" layoutX="-9.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/logo%20(3).png" />
@@ -22,5 +24,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
+      <TextField fx:id="TFrechercheReca" layoutX="108.0" layoutY="85.0" prefHeight="25.0" prefWidth="356.0" />
+      <Button layoutX="486.0" layoutY="85.0" mnemonicParsing="false" onAction="#recherche" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: b1d9ff;" text="Recherche" />
    </children>
 </AnchorPane>
