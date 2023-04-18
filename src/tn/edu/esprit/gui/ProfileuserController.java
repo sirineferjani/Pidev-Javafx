@@ -39,6 +39,21 @@ import tn.edu.esprit.entities.user;
 import static tn.edu.esprit.gui.RegisterUserController.hashPassword;
 import tn.edu.esprit.services.ServicePersonne;
 
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 /**
  * FXML Controller class
  *
@@ -77,14 +92,21 @@ public class ProfileuserController implements Initializable {
     @FXML
     private ImageView imageLogged;
 
+    @FXML
+    private ImageView qrCodeImageView;
+
     private user loggedInUser;
 
     public void setUserData(user user) throws IOException {
         loggedInUser = user;
+
+        // Afficher les informations de l'utilisateur
         nameLabel.setText(loggedInUser.getNom());
         Labelemail.setText(loggedInUser.getEmail());
         adressLabel.setText(loggedInUser.getPrenom());
+
         try {
+            // Charger l'image de l'utilisateur à partir du disque
             Image image = new Image(new FileInputStream("C:/imagepi/" + loggedInUser.getImage()));
             imageLogged.setImage(image);
             imageLogged.setFitWidth(150);
@@ -93,6 +115,27 @@ public class ProfileuserController implements Initializable {
             imageLogged.setPreserveRatio(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ProfileuserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            // Générer le contenu du QR code
+            String qrCodeContent = String.format("Nom : %s\nEmail : %s\nAdresse: %s",
+                    loggedInUser.getNom(), loggedInUser.getEmail(), loggedInUser.getPrenom());
+
+            // Créer un writer pour le QR code
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+
+            // Générer la matrice de bits pour le contenu du QR code
+            BitMatrix bitMatrix = qrCodeWriter.encode(qrCodeContent, com.google.zxing.BarcodeFormat.QR_CODE, 200, 200);
+
+            // Convertir la matrice de bits en image BufferedImage
+            BufferedImage qrCodeImage = toBufferedImage(bitMatrix);
+
+            // Convertir l'image BufferedImage en image JavaFX et l'afficher dans l'interface utilisateur
+            qrCodeImageView.setImage(SwingFXUtils.toFXImage(qrCodeImage, null));
+
+        } catch (WriterException e) {
+            e.printStackTrace();
         }
     }
 
@@ -104,23 +147,23 @@ public class ProfileuserController implements Initializable {
         String newAddress = addressField != null ? addressField.getText() : null;
         String newPassword = PasswordField != null ? PasswordField.getText() : null;
 
-      if (newName != null && !newName.isEmpty()) { //si nameField est null, alors newName sera null, la condition sera fausse et le bloc if ne sera pas exécuté.
-    loggedInUser.setNom(newName);
-}
+        if (newName != null && !newName.isEmpty()) { //si nameField est null, alors newName sera null, la condition sera fausse et le bloc if ne sera pas exécuté.
+            loggedInUser.setNom(newName);
+        }
 
-if (newEmail != null && !newEmail.isEmpty()) {
-    loggedInUser.setEmail(newEmail);
-}
+        if (newEmail != null && !newEmail.isEmpty()) {
+            loggedInUser.setEmail(newEmail);
+        }
 
-if (newAddress != null && !newAddress.isEmpty()) {
-    loggedInUser.setPrenom(newAddress);
-}
+        if (newAddress != null && !newAddress.isEmpty()) {
+            loggedInUser.setPrenom(newAddress);
+        }
 
-if (newPassword != null && !newPassword.isEmpty()) {
-    loggedInUser.setPassword(newPassword);
-    String hashedPassword = hashPassword(newPassword);
-    loggedInUser.setPassword(hashedPassword);
-}
+        if (newPassword != null && !newPassword.isEmpty()) {
+            loggedInUser.setPassword(newPassword);
+            String hashedPassword = hashPassword(newPassword);
+            loggedInUser.setPassword(hashedPassword);
+        }
 
         ServicePersonne service = new ServicePersonne();
         service.modifier(loggedInUser);
@@ -150,7 +193,23 @@ if (newPassword != null && !newPassword.isEmpty()) {
         stage.setScene(scene);
         stage.show();
     }
-   /* @FXML
+    
+    
+    //La fonction toBufferedImage() prend une matrice de bits (BitMatrix) représentant un QR Code et la convertit en une image BufferedImage de taille égale contenant les données du QR Code.
+
+    private static BufferedImage toBufferedImage(BitMatrix matrix) {
+        int height = matrix.getHeight();
+        int width = matrix.getWidth();
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                image.setRGB(x, y, matrix.get(x, y) ? 0xFF000000 : 0xFFFFFFFF);
+            }
+        }
+        return image;
+    }
+
+    /* @FXML
 private void handleLogoutButtonAction(ActionEvent event) throws IOException {
     // Réinitialiser l'utilisateur actuellement connecté
     loggedInUser = null;
@@ -163,5 +222,5 @@ private void handleLogoutButtonAction(ActionEvent event) throws IOException {
     stage.setScene(scene);
     stage.show();
 }
-*/
+     */
 }

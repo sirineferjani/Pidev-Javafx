@@ -17,50 +17,50 @@
             <Image url="@../images/gra.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="19.0" layoutY="63.0" prefHeight="407.0" prefWidth="570.0" style=" -fx-background-radius: 20;">
+      <AnchorPane layoutX="19.0" layoutY="62.0" prefHeight="407.0" prefWidth="570.0" style=" -fx-background-radius: 20;">
          <children>
             <Pane prefHeight="407.0" prefWidth="235.0">
                <children>
                   <Pane layoutX="-3.0" layoutY="155.0" prefHeight="250.0" prefWidth="245.0">
                      <children>
                          
-                        <TextField fx:id="nameField" layoutX="29.0" layoutY="66.0" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
-                        <TextField fx:id="emailField" layoutX="30.0" layoutY="100.0" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
-                        <TextField fx:id="addressField" layoutX="30.0" layoutY="134.0" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
+                        <TextField fx:id="nameField" layoutX="29.0" layoutY="66.0" promptText="Nom" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
+                        <TextField fx:id="emailField" layoutX="30.0" layoutY="100.0" promptText="E-mail" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
+                        <TextField fx:id="addressField" layoutX="30.0" layoutY="134.0" promptText="Adresse" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
                          <Button fx:id="saveButton" layoutX="48.0" layoutY="207.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="109.0" style=" -fx-background-color:#89CFF0; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #89CFF0; -fx-text-fill: white;-fx-font-size: 16px;-fx-padding: 8px 16px;" text="Valider" />
                         <Button fx:id="update" layoutX="38.0" layoutY="11.0" mnemonicParsing="false" onAction="#eklebAction" prefHeight="43.0" prefWidth="132.0" style=" -fx-background-color:#89CFF0; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #89CFF0; -fx-text-fill: white;-fx-font-size: 16px;-fx-padding: 8px 16px;" text="Modifier" />
-                        <PasswordField fx:id="PasswordField" layoutX="29.0" layoutY="172.0" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;"  />
+                        <PasswordField fx:id="PasswordField" layoutX="29.0" layoutY="172.0" promptText="Mot De Passe" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
                      </children>
                   </Pane>
                   <ImageView fx:id="imageLogged" fitHeight="141.0" fitWidth="197.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
-            <ImageView fitHeight="85.0" fitWidth="99.0" layoutX="254.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="85.0" fitWidth="99.0" layoutX="273.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/round%20bleu.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="85.0" layoutX="352.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="92.0" fitWidth="85.0" layoutX="372.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/round%20bleu.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="85.0" fitWidth="118.0" layoutX="451.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="85.0" fitWidth="118.0" layoutX="471.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/round%20bleu.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="79.0" layoutX="273.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="48.0" fitWidth="79.0" layoutX="292.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/event.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="57.0" fitWidth="70.0" layoutX="366.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="57.0" fitWidth="70.0" layoutX="386.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/stores.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="465.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="485.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/activity.png" />
                </image>
@@ -80,6 +80,12 @@
             <Label fx:id="Labelemail" layoutX="431.0" layoutY="99.0" text="Label" />
             <Label fx:id="adressLabel" layoutX="431.0" layoutY="157.0" text="Label" />
             <Label layoutX="297.0" layoutY="46.0" text="Nom :">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="qrCodeImageView" fitHeight="103.0" fitWidth="125.0" layoutX="397.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="292.0" layoutY="204.0" text="Qr Code: ">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>

@@ -17,7 +17,7 @@
             <Image url="@../images/gra.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="19.0" layoutY="46.0" prefHeight="407.0" prefWidth="570.0" style=" -fx-background-radius: 20;">
+      <AnchorPane layoutX="19.0" layoutY="41.0" prefHeight="423.0" prefWidth="570.0" style=" -fx-background-radius: 20;">
          <children>
             <Pane prefHeight="407.0" prefWidth="235.0">
                <children>
@@ -49,13 +49,13 @@
                </image>
             </ImageView>
             <TextField fx:id="tfNom" layoutX="268.0" layoutY="113.0" prefHeight="42.0" prefWidth="235.0" promptText="Nom" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
-            <Button fx:id="button" layoutX="348.0" layoutY="366.0" mnemonicParsing="false" onAction="#ajouterPersonne" prefHeight="43.0" prefWidth="132.0" style=" -fx-background-color:#89CFF0; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #89CFF0; -fx-text-fill: white;-fx-font-size: 16px;-fx-padding: 8px 16px;" text="Register" />
+            <Button fx:id="button" layoutX="335.0" layoutY="376.0" mnemonicParsing="false" onAction="#ajouterPersonne" prefHeight="43.0" prefWidth="132.0" style=" -fx-background-color:#89CFF0; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #89CFF0; -fx-text-fill: white;-fx-font-size: 16px;-fx-padding: 8px 16px;" text="Register" />
             <PasswordField fx:id="tfMotDePasse" layoutX="268.0" layoutY="281.0" prefHeight="42.0" prefWidth="235.0" promptText="Mot De Passe" style=" -fx-text-inner-color: #D8D8D8;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
             <TextField fx:id="tfemail" layoutX="267.0" layoutY="222.0" prefHeight="42.0" prefWidth="235.0" promptText="Email" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
             <TextField fx:id="tfPrenom" layoutX="267.0" layoutY="167.0" prefHeight="42.0" prefWidth="235.0" promptText="Adresse" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
             <TextField fx:id="imageUser" layoutX="378.0" layoutY="333.0" prefHeight="2.0" prefWidth="113.0" promptText="Image" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
-            <Button layoutX="260.0" layoutY="325.0" mnemonicParsing="false" onAction="#uploadimgeUser" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #383838; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-text-fill: #ffffff; -fx-font-weight: bold;     -fx-font-size: 14px;     -fx-padding: 10px 20px;" text="image" />
-            <Label layoutX="488.0" layoutY="356.0" onMouseClicked="#GoToLogin" text="compte existant?" />
+            <Button layoutX="262.0" layoutY="338.0" mnemonicParsing="false" onAction="#uploadimgeUser" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #383838; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-text-fill: #ffffff; -fx-font-weight: bold;     -fx-font-size: 14px;     -fx-padding: 10px 20px;" text="image" />
+            <Label layoutX="467.0" layoutY="400.0" onMouseClicked="#GoToLogin" text="compte existant?" />
          </children>
       </AnchorPane>
    </children>
