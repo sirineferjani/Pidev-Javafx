@@ -76,7 +76,18 @@ public class ArticledisplayController implements Initializable {
             Logger.getLogger(ArticledisplayController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
-      
+      public static void sendSms(String recipient, String messageBody) {
+    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+    Message message = Message.creator(
+            new PhoneNumber(recipient), // To number
+            new PhoneNumber("+15672922126"), // From number
+            messageBody) // SMS body
+        .create();
+
+    System.out.println("Message sent: " + message.getSid());
+  }
+
 
     public void addtopane() throws FileNotFoundException{
        articlepane.getChildren().clear();

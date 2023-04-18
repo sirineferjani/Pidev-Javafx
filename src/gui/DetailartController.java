@@ -54,7 +54,7 @@ public class DetailartController implements Initializable {
      public void setlabelprod(article a){
         
         try {
-            artview.setImage(new Image(new FileInputStream(Statics.uploadDirectory1+a.getImage())));
+            artview.setImage(new Image(new FileInputStream(Statics.uploadDirectory+a.getImage())));
             artview.setFitWidth(200);
             artview.setFitHeight(200);
             artview.setPreserveRatio(true);
@@ -65,7 +65,7 @@ public class DetailartController implements Initializable {
         art=a;
         nomart.setText(a.getNom_article());
         nomart.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        prix.setText(String.format("%.2f DT", a.getPrix()));
+        prix.setText(Integer.toString(a.getPrix()));
         prix.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
         description.setText(a.getDescription());
         description.setWrapText(true);

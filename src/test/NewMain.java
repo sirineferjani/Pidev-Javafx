@@ -5,8 +5,10 @@
  */
 package test;
 
+import entitie.SMS;
 import entitie.article;
 import entitie.categorie;
+import static gui.ArticledisplayController.sendSms;
 import service.articleService;
 import service.categorieService;
 import utils.DataSource;
@@ -21,7 +23,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      //  DataSource mc = new DataSource();
+    /*  //  DataSource mc = new DataSource();
       articleService as= new articleService();
        // System.out.println(as.afficherArticle());
       //   article a = new article(70,"camping","aaa",50,"aaa",50);
@@ -31,7 +33,10 @@ public class NewMain {
     
       //cs.ajouterCategorie(c);
       //cs.supprimerCategorie(53);
-        System.out.println(as.findprodbycat(20));
+        System.out.println(as.findprodbycat(20));*/
+         SMS ss=new SMS();
+         ss.sms("tente");
+         
     }
     
 }

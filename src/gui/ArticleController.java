@@ -108,11 +108,17 @@ public boolean estAlpha(String chaine) {
             }else return false;
             
         }
-public boolean estUnNombre(int p) {
-  if (isNaN(p)) {
-    return false;
-  }
-  return true;
+ public boolean estEntier(int entier) {
+    /*
+     * Vérifie si l'entier est valide.
+     * Retourne true si l'entier est valide, false sinon.
+     */
+    try {
+        Integer.toString(entier);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
 }
 //public boolean testpos(float d){
 //          if(d>1&&d!=0){
@@ -152,41 +158,53 @@ public boolean estUnNombre(int p) {
             Logger.getLogger(ArticleController.class.getName()).log(Level.SEVERE, null, ex);
         } }
     else{
-/*            if(!estUnNombre(Integer.parseInt(refa.getText()))){
-                erreurref.setText("seulement des nombres");
-            }*/
+     
+          String refString = refa.getText();
+if (!refString.isEmpty()) {
+    try {
+        int ref_article = Integer.parseInt(refString);
+        // Vérifier si le prix est un entier valide ici
+        // ...
+    } catch (NumberFormatException e) {
+        erreurref.setText("La référence doit être un entier");
+    }
+} else {
+    erreurref.setText("le champ ne doit pas être vide");
+}
+            if(!estAlpha(dsea.getText())&&dsea.getText().length()<10&&dsea.getText().isEmpty()){
+                erreurdesc.setText("Seulement des alphabets et un nombre de caractere sup a 10");
+            }
+
             if(imagea.getText().isEmpty()){
-                erreurimg.setText("veuillez choisir une image");
+                erreurimg.setText("Veuillez choisir une image");
             }
             if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
-                erreurnom.setText("seulement des alphabets");
+                erreurnom.setText("Seulement des alphabets");
             }
-            if(!estAlpha(dsea.getText())&&dsea.getText().length()<10&&dsea.getText().isEmpty()){
-                erreurdesc.setText("seulement des alphabets et un nombre de caractere sup a 10");
-            }
+         
             if(!estAlpha(dsea.getText())&&dsea.getText().isEmpty()){
-                erreurdesc.setText("seulement des alphabets");
+                erreurdesc.setText("Seulement des alphabets");
             }
             if(dsea.getText().length()<10&&dsea.getText().isEmpty()){
-                erreurdesc.setText("il faut un nombre de caractere sup a 10");
+                erreurdesc.setText("Il faut un nombre de caractere sup a 10");
             }
         
             String hh=prixa.getText();
             hh+="0";
             if(!testpos(Integer.parseInt(hh))||prixa.getText().isEmpty()){
-                erreurprix.setText("il faut un prix positif");
+                erreurprix.setText("Il faut un prix positif");
             }
             String xx=sa.getText();
             xx+="0";
             if(!testpos(Integer.parseInt(xx))&&Integer.parseInt(xx)==0||sa.getText().isEmpty()){
-               erreurstock.setText("il faut une quantite positif et quantite sup a 0");
+               erreurstock.setText("Il faut une quantite positif et quantite sup a 0");
             }
             
             if(!testpos(Integer.parseInt(xx))||sa.getText().isEmpty()){
-                erreurstock.setText("il faut une quantite positif"); 
+                erreurstock.setText("Il faut une quantite positif"); 
             }
             if(Integer.parseInt(xx)==0||sa.getText().isEmpty()){
-                erreurstock.setText("quantite sup a 0");
+                erreurstock.setText("Quantite sup a 0");
             }
             
         }
