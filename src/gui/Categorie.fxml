@@ -12,14 +12,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategorieController">
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategorieController">
    <children>
-      <ImageView fitHeight="475.0" fitWidth="743.0" layoutX="-4.0" layoutY="81.0" opacity="0.53" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="474.0" fitWidth="538.0" layoutX="142.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/camping-en-famille.jpg" />
+            <Image url="@../image/gra.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="83.0" layoutX="-5.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="713.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="76.0" layoutX="-5.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="713.0" />
       <Label layoutX="191.0" layoutY="168.0" prefHeight="21.0" prefWidth="126.0" text="Nom catégorie:">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -57,12 +57,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="136.0" style="-fx-background-color: b1d9ff;" text="Gestion des articles">
+            <Button mnemonicParsing="false" onAction="#Gstarticle" prefHeight="43.0" prefWidth="136.0" style="-fx-background-color: b1d9ff;" text="Gestion des articles">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="156.0" style="-fx-background-color: b1d9ff;" text="Gestion des catégories" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#Gstcategorie" prefHeight="46.0" prefWidth="156.0" style="-fx-background-color: b1d9ff;" text="Gestion des catégories" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>

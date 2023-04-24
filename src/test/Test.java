@@ -25,7 +25,7 @@ public class Test extends Application {
     @Override
      public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Article.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Catfront.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root,700,500);
             primaryStage.setTitle("Hello World!");

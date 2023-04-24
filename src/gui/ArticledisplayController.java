@@ -8,6 +8,7 @@ package gui;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import entitie.SMS;
 import entitie.article;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -75,8 +76,18 @@ public class ArticledisplayController implements Initializable {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ArticledisplayController.class.getName()).log(Level.SEVERE, null, ex);
         }
+         recherche();
+          articleService a=new articleService();
+        
+        listprod=a.afficherArticle();
+        SMS ss=new SMS();
+        for(article art:listprod){
+            if(art.getStock()==0){
+                ss.sms(art.getNom_article());
+            }
+        }
     }    
-      public static void sendSms(String recipient, String messageBody) {
+  /*    public static void sendSms(String recipient, String messageBody) {
     Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
     Message message = Message.creator(
@@ -86,7 +97,8 @@ public class ArticledisplayController implements Initializable {
         .create();
 
     System.out.println("Message sent: " + message.getSid());
-  }
+  }*/
+    
 
 
     public void addtopane() throws FileNotFoundException{
@@ -155,6 +167,13 @@ public class ArticledisplayController implements Initializable {
     Label label = new Label(article.getNom_article());
     return label;
     }*/
+    
+   /* public void verifierStockEtEnvoyerSMS(article a) {
+        
+    if (a.getStock() < 6) {
+        sms(a.getNom_c);
+    }
+}*/
     private Node createArticleNode(article article) throws FileNotFoundException {
     // Créer un VBox pour contenir le nom et le prix de l'article
      if(article == null) {
@@ -198,7 +217,7 @@ public class ArticledisplayController implements Initializable {
     return stackPane;
      }
 }
-    @FXML
+   /* @FXML
     private void recherche(ActionEvent event) {
           // Ajouter un listener sur le champ de recherche pour effectuer la recherche à chaque modification du texte
     TFrechercheReca.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -229,7 +248,32 @@ public class ArticledisplayController implements Initializable {
        // articlepane.setItems(FXCollections.observableArrayList(articlerecherche));
     });
         
-    }
+    }*/
+private void recherche() {
+    // Ajouter un listener sur le champ de recherche pour effectuer la recherche à chaque modification du texte
+    TFrechercheReca.textProperty().addListener((observable, oldValue, newValue) -> {
+        articleService sp=new articleService();   
+        // Filtrer les articles en utilisant le nouveau texte de recherche
+        List<article> articlerecherche = sp.afficherArticle().stream()
+                .filter(article -> article.getNom_article().toLowerCase().contains(newValue.toLowerCase()))
+                .collect(Collectors.toList());
+        // Vider le FlowPane actuel pour afficher les articles filtrés
+        articlepane.getChildren().clear();
+        for (article article : articlerecherche) {
+            try {
+                Node articleNode = createArticleNode(article);
+                if (articleNode != null) {
+                    articlepane.getChildren().add(articleNode); // ajouter le nouveau noeud dans le FlowPane
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ArticledisplayController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        articlepane.layout();
+    });
+}
+
+
    
     
    

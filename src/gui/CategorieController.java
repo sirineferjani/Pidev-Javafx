@@ -136,5 +136,24 @@ public class CategorieController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+
+    @FXML
+    private void Gstarticle(ActionEvent event) {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Article.fxml"));
+            Parent root = loader.load();
+            
+
+          aff1.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+    }
+
+    @FXML
+    private void Gstcategorie(ActionEvent event) {
+ 
+    }
     
 }

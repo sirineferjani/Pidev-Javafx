@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui.CatfrontController">
+<AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CatfrontController">
    <children>
-      <FlowPane fx:id="flowcatfront" layoutX="200.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <FlowPane fx:id="flowcatfront" layoutX="37.0" layoutY="122.0" prefHeight="244.0" prefWidth="541.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="122.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="68.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="558.0" />
+      <ImageView fitHeight="75.0" fitWidth="87.0" layoutX="-3.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/logo%20(3).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

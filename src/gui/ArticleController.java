@@ -79,6 +79,8 @@ public class ArticleController implements Initializable {
     private Label erreurdesc;
     private File selectedFile;
     categorieService cs;
+    @FXML
+    private Button cat;
 
     /**
      * Initializes the controller class.
@@ -158,6 +160,9 @@ public boolean estAlpha(String chaine) {
             Logger.getLogger(ArticleController.class.getName()).log(Level.SEVERE, null, ex);
         } }
     else{
+      if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
+                erreurnom.setText("Seulement des alphabets");
+            }
      
           String refString = refa.getText();
 if (!refString.isEmpty()) {
@@ -178,9 +183,7 @@ if (!refString.isEmpty()) {
             if(imagea.getText().isEmpty()){
                 erreurimg.setText("Veuillez choisir une image");
             }
-            if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
-                erreurnom.setText("Seulement des alphabets");
-            }
+
          
             if(!estAlpha(dsea.getText())&&dsea.getText().isEmpty()){
                 erreurdesc.setText("Seulement des alphabets");
@@ -240,6 +243,19 @@ if (!refString.isEmpty()) {
         }
         
        
+    }
+
+    @FXML
+    private void Gestioncategorie(ActionEvent event) {
+                 try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Categorie.fxml"));
+            Parent root = loader.load();
+            
+
+          cat.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
     

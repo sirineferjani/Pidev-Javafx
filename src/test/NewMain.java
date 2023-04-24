@@ -8,7 +8,6 @@ package test;
 import entitie.SMS;
 import entitie.article;
 import entitie.categorie;
-import static gui.ArticledisplayController.sendSms;
 import service.articleService;
 import service.categorieService;
 import utils.DataSource;
