@@ -24,6 +24,7 @@ import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -45,10 +46,25 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import tn.edu.esprit.utils.Statics;
+import javax.swing.JOptionPane;
 
 import tn.edu.esprit.entities.user;
+
 import tn.edu.esprit.services.ServicePersonne;
 
+import com.wf.captcha.utils.CaptchaUtil;
+import com.wf.captcha.base.Captcha;
+
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * FXML Controller class
@@ -56,210 +72,215 @@ import tn.edu.esprit.services.ServicePersonne;
  * @author nourb
  */
 public class RegisterUserController implements Initializable {
-   private String imguser;
+
+    private String imguser;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }  
-     @FXML
+    }
+    @FXML
     private TextField tfNom;
     @FXML
     private TextField tfPrenom;
     @FXML
-    private   PasswordField tfMotDePasse;
-     @FXML
-    private   TextField tfemail;
-     @FXML
-     private ImageView imageView;
-     @FXML
+    private PasswordField tfMotDePasse;
+    @FXML
+    private TextField tfemail;
+    @FXML
+    private ImageView imageView;
+    @FXML
     private Label ImageName;
-     @FXML
+    @FXML
     private TextField imageUser;
-    private File selectedFile=null;
-       @FXML
-    private   TextField tfimage;
-   
+    private File selectedFile = null;
+    @FXML
+    private TextField tfimage;
+
+    private String selectedFilePath;
+
+    private final String SITE_KEY = "6LfjapclAAAAAOdw-LLrDl6T-G5Bz9vN4MWQPUAU";
+    private final String SECRET_KEY = "6LfjapclAAAAAORI3yxw0Gf8d1AE48RHhOg6Wy78";
+
+    Random r = new Random();
+    static int nb_valider;
+
     /**
      * Initializes the controller class.
      */
     private boolean isValidInput() {
-    if (tfNom.getText().isEmpty()) {
-        Alert a = new Alert(Alert.AlertType.ERROR, "Le champ Nom ne peut pas etre nulle", ButtonType.OK);
-        a.showAndWait();
-        return false;
-    }
-     if (tfPrenom.getText().isEmpty())
-         {
-        Alert a = new Alert(Alert.AlertType.ERROR, "Le champ adresse ne peut pas etre nulle", ButtonType.OK);
-        a.showAndWait();
-        return false;
-    }
-     if (tfemail.getText().isEmpty())
-         {
-        Alert a = new Alert(Alert.AlertType.ERROR, "Le champ adresse mail  ne peut pas etre nulle", ButtonType.OK);
-        a.showAndWait();
-        return false;}
-    
-   
-    if (!tfemail.getText().matches("^\\S+@(esprit\\.tn|gmail\\.fr|gmail\\.com|yahoo\\.fr|yahoo\\.com)$")) {
-    Alert a = new Alert(Alert.AlertType.ERROR, "Email invalide", ButtonType.OK);
-    a.showAndWait();
-    return false;
-}
+        if (tfNom.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Le champ Nom ne peut pas etre nulle", ButtonType.OK);
+            a.showAndWait();
+            return false;
+        }
+        if (tfPrenom.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Le champ adresse ne peut pas etre nulle", ButtonType.OK);
+            a.showAndWait();
+            return false;
+        }
+        if (tfemail.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Le champ adresse mail  ne peut pas etre nulle", ButtonType.OK);
+            a.showAndWait();
+            return false;
+        }
 
-    if (tfMotDePasse.getText().length() < 5) {
-        Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit contenir au moins 5 caractères", ButtonType.OK);
-        a.showAndWait();
-        return false;
+        if (!tfemail.getText().matches("^\\S+@(esprit\\.tn|gmail\\.fr|gmail\\.com|yahoo\\.fr|yahoo\\.com)$")) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Email invalide", ButtonType.OK);
+            a.showAndWait();
+            return false;
+        }
+
+        if (tfMotDePasse.getText().length() < 5) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit contenir au moins 5 caractères", ButtonType.OK);
+            a.showAndWait();
+            return false;
+        } else if (!Character.isUpperCase(tfMotDePasse.getText().charAt(0))) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit commencer par une majuscule", ButtonType.OK);
+            a.showAndWait();
+            return false;
+        } else if (!tfMotDePasse.getText().matches(".*[\\d\\W].*")) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit contenir au moins un chiffre ou un symbole pour sa robustesse", ButtonType.OK);
+            a.showAndWait();
+            return false;
+        }
+
+        return true;
     }
-        else if (!Character.isUpperCase(tfMotDePasse.getText().charAt(0))) {
-        Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit commencer par une majuscule", ButtonType.OK);
-        a.showAndWait();
-        return false;
-    }
-    else  if (!tfMotDePasse.getText().matches(".*[\\d\\W].*")) {
-        Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit contenir au moins un chiffre ou un symbole pour sa robustesse", ButtonType.OK);
-        a.showAndWait();
-        return false;
-    }
-    return true;
-}
 
 
-  /*  @FXML
+      @FXML
     private void ajouterPersonne(ActionEvent event) throws IOException {
         if (!isValidInput()) {
-        return;
-    } {
-            try {
-                ServicePersonne sp = new ServicePersonne();
-               String hashedPassword = hashPassword(tfMotDePasse.getText());
-               
-               
-            // Sélectionne l'image et la charge dans l'élément ImageView de votre FXML
-            // choisirImage(event);
-               user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword , tfemail.getText());
-               p.setEmail(tfemail.getText());
-                sp.ajouter(p);
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Personne added !", ButtonType.OK);
-                a.showAndWait();
-                
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-                Parent root = loader.load();
-                tfNom.getScene().setRoot(root);
-                
-                AfficherPersonneController apc = loader.getController();
-                apc.setNom(tfNom.getText());
-                apc.setPrenom(tfPrenom.getText());
-                /*apc.setPassword(tfMotDePasse.getText());
-                apc.setRole("User");
-                apc.setEmail(tfemail.getText());*/
-               // apc.setImage(imageView.getImage());
-              
-                
-         /*   } catch (SQLException ex) {
-                Alert a = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
-                a.showAndWait();
-            }
+            return;
         }
 
-    }*/
-  @FXML
-private void ajouterPersonne(ActionEvent event) throws IOException {
-    if (!isValidInput()) {
-        return;
-    }
+        try {
+            ServicePersonne sp = new ServicePersonne();
+            String hashedPassword = hashPassword(tfMotDePasse.getText());
+            int randomize = (int) Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+            String newFileName = randomize + "-" + selectedFile.getName();
 
-   
-
-    try {
-        ServicePersonne sp = new ServicePersonne();
-        String hashedPassword = hashPassword(tfMotDePasse.getText());
-         int randomize = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-         String newFileName = randomize+"-"+selectedFile.getName();
-        // Sélectionne l'image et la charge dans l'élément ImageView de votre FXML
-       // choisirImage(event);
-
-        // Convertit l'image en un tableau de bytes pour le stockage dans la base de données
-        /*byte[] imageBytes = null;
-        if (imageView.getImage() != null) {
-            BufferedImage bImage = SwingFXUtils.fromFXImage(imageView.getImage(), null);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bImage, "jpg", baos);
-            imageBytes = baos.toByteArray();
-        }*/
-
-       //user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword , tfemail.getText(), imageBytes);
-       user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword , tfemail.getText() ,newFileName );
-        Path sourceFile = Paths.get(selectedFile.toPath().toString());
-        Path targetFile = Paths.get("C:/imagepi/" + newFileName);
-
+            user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword, tfemail.getText(), newFileName);
+            Path sourceFile = Paths.get(selectedFile.toPath().toString());
+            Path targetFile = Paths.get("C:/imagepi/" + newFileName);
 
 //
-        Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
-        
-        sp.ajouter(p);
-        Alert a = new Alert(Alert.AlertType.INFORMATION, "Personne added !", ButtonType.OK);
-        a.showAndWait();
+            Files.copy(sourceFile, targetFile, StandardCopyOption.REPLACE_EXISTING);
 
+            sp.ajouter(p);
+            Alert a = new Alert(Alert.AlertType.INFORMATION, "Personne added !", ButtonType.OK);
+            a.showAndWait();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
+            tfNom.getScene().setRoot(root);
+
+            AfficherPersonneController apc = loader.getController();
+            apc.setNom(tfNom.getText());
+            apc.setPrenom(tfPrenom.getText());
+
+        } catch (SQLException ex) {
+            Alert a = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
+            a.showAndWait();
+        }
+    }
+   
+
+   /* @FXML
+    private void ajouterPersonne(ActionEvent event) throws IOException {
+        if (!isValidInput()) {
+            return;
+        }
+
+        try {
+            ServicePersonne sp = new ServicePersonne();
+            String hashedPassword = hashPassword(tfMotDePasse.getText());
+            int randomize = (int) Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+            String newFileName = randomize + "-" + selectedFile.getName();
+
+            user p = new user(tfNom.getText(), tfPrenom.getText(), hashedPassword, tfemail.getText(), newFileName);
+            Path sourceFile = Paths.get(selectedFile.toPath().toString());
+            Path targetFile = Paths.get("C:/imagepi/" + newFileName);
+
+            int nb_valider = new Random().nextInt(10000);
+            mailingValider(tfemail.getText(), nb_valider);
+
+// Saisie du code de confirmation
+            boolean codeValide = false;
+            while (!codeValide) {
+                codeValide = isCodeValide(nb_valider);
+                if (!codeValide) {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Code de confirmation invalide. Veuillez réessayer.", ButtonType.OK);
+                    a.showAndWait();
+                }
+            }
+
+            Files.copy(sourceFile, targetFile, StandardCopyOption.REPLACE_EXISTING);
+
+            sp.ajouter(p);
+            Alert a = new Alert(Alert.AlertType.INFORMATION, "Personne added !", ButtonType.OK);
+            a.showAndWait();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
+            tfNom.getScene().setRoot(root);
+
+            AfficherPersonneController apc = loader.getController();
+            apc.setNom(tfNom.getText());
+            apc.setPrenom(tfPrenom.getText());
+
+        } catch (SQLException ex) {
+            Alert a = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
+            a.showAndWait();
+        } catch (Exception ex) {
+            Alert a = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
+            a.showAndWait();
+        }
+    }*/
+
+    
+    public static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hash) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @FXML
+    public void GoToLogin(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Parent root = loader.load();
-        tfNom.getScene().setRoot(root);
-
-        AfficherPersonneController apc = loader.getController();
-        apc.setNom(tfNom.getText());
-        apc.setPrenom(tfPrenom.getText());
-       // apc.setPassword(tfMotDePasse.getText());
-       // apc.setRole("User");
-       // apc.setEmail(tfemail.getText());
-       // apc.setImage(imageView.getImage());
-
-    } catch (SQLException ex) {
-        Alert a = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
-        a.showAndWait();
+        LoginController cntr = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
-}
 
+    @FXML
+    private void uploadimgeUser(ActionEvent event) {
+        final FileChooser fileChooser = new FileChooser();
+        final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-  public static String hashPassword(String password) {
-    try {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
-        StringBuilder sb = new StringBuilder();
-        for (byte b : hash) {
-            sb.append(String.format("%02x", b));
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            imageUser.setText(file.getName());
+            selectedFile = file;
         }
-        return sb.toString();
-    } catch (NoSuchAlgorithmException ex) {
-        throw new RuntimeException(ex);
     }
-}
+
       @FXML
-   public void GoToLogin(MouseEvent event) throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-    Parent root = loader.load();
-    LoginController cntr = loader.getController();
-    Scene scene = new Scene(root);
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-}
-   @FXML
-private void uploadimgeUser(ActionEvent event) {
-    final FileChooser fileChooser = new FileChooser();
-    final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-    File file = fileChooser.showOpenDialog(stage); 
-    if (file != null) { 
-        imageUser.setText(file.getName()); 
-        selectedFile = file;
-    }
-}
-
-   /*   @FXML
 private void choisirImage(ActionEvent event) {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Choisir une image");
@@ -277,17 +298,11 @@ private void choisirImage(ActionEvent event) {
             a.showAndWait();
         }
     }
-}*/
-   
-   
-   }
+}
+}
 
-  
-  /* fel fxml <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="343.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+/* fel fxml <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="343.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="upload" layoutX="416.0" layoutY="220.0" mnemonicParsing="false" onAction="#browseButtonAction" style="-fx-background-color: #173ac6;" text="upload" textFill="#d4d7e1" />
 
 wfel service nzid l'image fil requete
 }*/
-
-    
-
