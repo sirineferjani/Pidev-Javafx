@@ -17,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -45,7 +47,7 @@ public class ServicePersonne implements IService<user>{
         st.executeUpdate(req);
     }*/
     public void ajouter(user p) throws SQLException {
-    String req = "INSERT INTO personne (nom, adresse, password, role, email, image) VALUES (?, ?, ?, ?, ?, ?)";
+    String req = "INSERT INTO personne (nom, adresse, password, role, email, image ,isBanned) VALUES (?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement ps = ds.getCnx().prepareStatement(req);
     ps.setString(1, p.getNom());
     ps.setString(2, p.getPrenom());
@@ -53,6 +55,7 @@ public class ServicePersonne implements IService<user>{
     ps.setString(4, "User");
     ps.setString(5, p.getEmail());
     ps.setString(6, p.getImage());
+    ps.setString(7, "0");
     ps.executeUpdate();
 }
 
@@ -234,32 +237,72 @@ public class ServicePersonne implements IService<user>{
             System.out.println(ex.getMessage());
         }
     }
-   /*  public user getUserByEmail(String email) throws SQLException {
-    user user =null; //La ligne User user = null; sert simplement à initialiser la variable user à null.
-     //Cette variable est ensuite utilisée pour stocker les informations de l'utilisateur récupéré depuis la base de données.
+     //ban avant l'ajout de la durée
+public void Ban(user u) {
+    try {
+        String req = "UPDATE personne SET isBanned = CASE WHEN isBanned = 0 THEN 1 ELSE 0 END WHERE id=?";
+        PreparedStatement ste = ds.getCnx().prepareStatement(req);
+        ste.setInt(1, u.getId());
+        int rowsUpdated = ste.executeUpdate();
+        if(rowsUpdated > 0) {
+            System.out.println("User_id " + u.getNom() + ":" + " Bloqué !");
+        } else {
+            System.out.println("Aucune ligne n'a été mise à jour. Vérifiez la valeur de u.getId().");
+        }
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+}
 
-    String req = "SELECT * FROM personne WHERE EMAIL = ?";
-   PreparedStatement statement = ds.getCnx().prepareStatement(req);
-  statement.setString(1, email);
-  
-   ResultSet result = statement.executeQuery(); 
-    if (result.next()) {
-    Blob blob = result.getBlob("image");
-    InputStream inputStream = blob.getBinaryStream();
-    Image image = new Image(inputStream);
-    user = new user(
-        result.getInt("id"),
-        result.getString("nom"),
-        result.getString("email"),
-        result.getString("password"),
-        result.getString("role"),
-        image
-    );
-    
+public void banSelonDuree(user u, int duration) {
+    try {
+        LocalDateTime unblockTime = LocalDateTime.now().plusMinutes(duration);
+        String req = "UPDATE personne SET isBanned = 1, unblockTime = ? WHERE id=?";
+        PreparedStatement ste = ds.getCnx().prepareStatement(req);
+        ste.setTimestamp(1, Timestamp.valueOf(unblockTime));
+        ste.setInt(2, u.getId());
+        int rowsUpdated = ste.executeUpdate();
+        if(rowsUpdated > 0) {
+            System.out.println("User_id " + u.getNom() + ":" + " Bloqué pour " + duration + " minutes !");
+        } else {
+            System.out.println("Aucune ligne n'a été mise à jour. Vérifiez la valeur de u.getId().");
+        }
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+}
 
-} return user; }
+public boolean isBanned(user u) {
+    try {
+        String req = "SELECT isBanned, unblockTime FROM personne WHERE id=?";
+        PreparedStatement ste = ds.getCnx().prepareStatement(req);
+        ste.setInt(1, u.getId());
+        ResultSet rs = ste.executeQuery();
+        if (rs.next()) {
+            boolean isBanned = rs.getBoolean("isBanned");
+            if (isBanned) {
+                LocalDateTime unblockTime = rs.getTimestamp("unblockTime").toLocalDateTime();
+                if (unblockTime.isBefore(LocalDateTime.now())) {
+                    // Si la date de déblocage est passée, débloquer l'utilisateur
+                    banSelonDuree(u, 0);
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            System.out.println("Aucun utilisateur avec cet ID n'a été trouvé.");
+            return false;
+        }
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+        return false;
+    }
+}
 
-*/
+
     
    
 }

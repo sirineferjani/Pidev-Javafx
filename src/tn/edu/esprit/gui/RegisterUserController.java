@@ -63,11 +63,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.octo.captcha.service.CaptchaServiceException;
-import com.octo.captcha.service.image.ImageCaptchaService;
-import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
-import java.io.ByteArrayInputStream;
 
 /**
  * FXML Controller class
@@ -84,8 +79,7 @@ public class RegisterUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        captchaService = new DefaultManageableImageCaptchaService();
-        generateCaptcha();
+       
     }
     @FXML
     private TextField tfNom;
@@ -109,8 +103,7 @@ public class RegisterUserController implements Initializable {
 
     private final String SITE_KEY = "6LfjapclAAAAAOdw-LLrDl6T-G5Bz9vN4MWQPUAU";
     private final String SECRET_KEY = "6LfjapclAAAAAORI3yxw0Gf8d1AE48RHhOg6Wy78";
-    private ImageCaptchaService captchaService;
-
+ 
   
 
     Random r = new Random();

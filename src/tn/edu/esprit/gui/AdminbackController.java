@@ -8,6 +8,8 @@ package tn.edu.esprit.gui;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +41,8 @@ public class AdminbackController implements Initializable {
 
     @FXML
     private FlowPane catpane;
+    private boolean estBloque = false;
+
 
     /**
      * Initializes the controller class.
@@ -54,7 +58,7 @@ public class AdminbackController implements Initializable {
         ServicePersonne sp = new ServicePersonne();
         ObservableList<user> listuser = FXCollections.observableArrayList();
         listuser = sp.afficherusers();
-        
+
         for (user us : listuser) {
             VBox card = new VBox();
             card.setPrefSize(250, 250);
@@ -100,9 +104,27 @@ public class AdminbackController implements Initializable {
                 ps.supprimeruser(us);
                 refrechpane();
             });
+            Label messageLabel = new Label("");
+
+            Button btn2 = new Button("Bloquer");
+            btn2.setAlignment(Pos.TOP_RIGHT);
+            btn2.setStyle("-fx-background-color: #ff0000;; -fx-background-radius: 25px; -fx-text-fill: white;");
+            btn2.setOnAction(e -> {
+                ServicePersonne ps = new ServicePersonne();
+                ps.Ban(us);
+                btn2.setText("Bloqué");
+                btn2.setStyle("-fx-background-color: #cccccc;; -fx-background-radius: 25px; -fx-text-fill: white;");
+                messageLabel.setText("Utilisateur " + us.getNom() + " bloqué !");
+                refrechpane();
+            });
+
+// Ajouter la label à votre interface utilisateur
+            card.getChildren().addAll(btn2, messageLabel);
+
             card.getChildren().add(btn1);
             catpane.getChildren().add(card);
             catpane.setMargin(card, new Insets(5, 5, 5, 5));
         }
     }
+    
 }

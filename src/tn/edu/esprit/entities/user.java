@@ -5,6 +5,8 @@
  */
 package tn.edu.esprit.entities;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author nourb
@@ -12,6 +14,24 @@ package tn.edu.esprit.entities;
 public class user {
     private int id;
     private String nom, prenom ,password ,role ,email,image;
+      private boolean isBanned;
+    private LocalDateTime banEndTime;
+
+    public boolean isIsBanned() {
+        return isBanned;
+    }
+
+    public void setIsBanned(boolean isBanned) {
+        this.isBanned = isBanned;
+    }
+
+    public LocalDateTime getBanEndTime() {
+        return banEndTime;
+    }
+
+    public void setBanEndTime(LocalDateTime banEndTime) {
+        this.banEndTime = banEndTime;
+    }
  
 
     public user(String nom, String prenom, String password, String email, String image) {
@@ -135,6 +155,17 @@ public class user {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public user(int id, String nom, String prenom, String password, String role, String email, String image, boolean isBanned) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+        this.image = image;
+        this.isBanned = isBanned;
     }
 
    
