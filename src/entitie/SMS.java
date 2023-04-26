@@ -22,7 +22,7 @@ public class SMS {
             Message message = Message.creator(
                 new PhoneNumber("+216 55 007 082"),
                 new PhoneNumber("+12766183398"),
-                "La quantite du produit"+nom_article+" va expiree bientot.")
+                "La quantite du l article "+nom_article+" va expirer bientot.")
             .create();
 
         System.out.println(message.getSid());

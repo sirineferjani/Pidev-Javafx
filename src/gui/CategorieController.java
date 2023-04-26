@@ -104,7 +104,10 @@ public class CategorieController implements Initializable {
         Path targetFile = Paths.get(Statics.uploadDirectory+newFileName);
 //
         Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
+        String message = "Une nouvelle catégorie a été ajouté.";
+        cs.notifyUser(message);
         }
+
         
       
     }

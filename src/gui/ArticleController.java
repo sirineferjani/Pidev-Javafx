@@ -158,7 +158,9 @@ public boolean estAlpha(String chaine) {
             Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(ArticleController.class.getName()).log(Level.SEVERE, null, ex);
-        } }
+        } 
+ 
+ }
     else{
       if(!estAlpha(noma.getText())&&noma.getText().isEmpty()){
                 erreurnom.setText("Seulement des alphabets");

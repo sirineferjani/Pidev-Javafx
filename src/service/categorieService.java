@@ -7,6 +7,11 @@ package service;
 
 import entitie.article;
 import entitie.categorie;
+import java.awt.AWTException;
+import java.awt.Image;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,39 +29,36 @@ import utils.DataSource;
  * @author user
  */
 public class categorieService {
-     Connection cnx = DataSource.getInstance().getCnx();
-    
-  public void ajouterCategorie(categorie c) {
-    try { 
-        String requete = "INSERT INTO categorie(nom_c,image_c)"+" VALUES (?,?)";
-        PreparedStatement pst = cnx.prepareStatement(requete);
-    
-       
-        pst.setString(1, c.getNom_c());
-        pst.setString(2, c.getImage_c());
-       
-        pst.executeUpdate();
-        System.out.println("Categorie ajouté");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    } 
-}
-    
-    public ObservableList<categorie> afficherCategorie() {
-       ObservableList<categorie> myList= FXCollections.observableArrayList();
-        
-    
+
+    Connection cnx = DataSource.getInstance().getCnx();
+
+    public void ajouterCategorie(categorie c) {
         try {
-            String sql="SELECT * FROM categorie";
-            Statement ste=cnx.createStatement();
-            ResultSet rs= ste.executeQuery(sql);
-            while(rs.next()){
-                 categorie c = new categorie();
-                 c.setId(rs.getInt(1));
-                 c.setNom_c(rs.getString("nom_c")); 
-                 c.setImage_c(rs.getString("image_c"));
-         
-                 
+            String requete = "INSERT INTO categorie(nom_c,image_c)" + " VALUES (?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+
+            pst.setString(1, c.getNom_c());
+            pst.setString(2, c.getImage_c());
+
+            pst.executeUpdate();
+            System.out.println("Categorie ajouté");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public ObservableList<categorie> afficherCategorie() {
+        ObservableList<categorie> myList = FXCollections.observableArrayList();
+
+        try {
+            String sql = "SELECT * FROM categorie";
+            Statement ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+            while (rs.next()) {
+                categorie c = new categorie();
+                c.setId(rs.getInt(1));
+                c.setNom_c(rs.getString("nom_c"));
+                c.setImage_c(rs.getString("image_c"));
 
                 myList.add(c);
             }
@@ -65,10 +67,11 @@ public class categorieService {
         }
         return myList;
     }
-     public void supprimerCategorie(categorie cat) {
+
+    public void supprimerCategorie(categorie cat) {
         try {
             String req = "DELETE FROM `categorie` WHERE id = ?";
-            PreparedStatement ste=cnx.prepareStatement(req);
+            PreparedStatement ste = cnx.prepareStatement(req);
             ste.setInt(1, cat.getId());
             ste.executeUpdate();
             System.out.println("Categorie supprimée !");
@@ -76,40 +79,63 @@ public class categorieService {
             System.out.println(ex.getMessage());
         }
     }
-         public void modifierCategorie(categorie c) {
-        String sql="update categorie set nom_c=?,image_c=? where id=? ";
-        PreparedStatement ste ;
+
+    public void modifierCategorie(categorie c) {
+        String sql = "update categorie set nom_c=?,image_c=? where id=? ";
+        PreparedStatement ste;
         try {
             ste = cnx.prepareStatement(sql);
             ste.setString(1, c.getNom_c());
             ste.setString(2, c.getImage_c());
             ste.setInt(3, c.getId());
-           
-          
+
             ste.executeUpdate();
             System.out.println("Categorie modifiée");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-         public categorie getCatParId(int id) {
-    String sql = "SELECT * FROM categorie WHERE id = ?";
-    PreparedStatement ste;
-    try {
-        ste = cnx.prepareStatement(sql);
-        ste.setInt(1, id);
-        ResultSet rs = ste.executeQuery();
-        if (rs.next()) {
-            categorie c = new categorie(
-                    rs.getInt("id"),
-                    rs.getString("nom_c"),
-                    rs.getString("image_c")
-            );
-            return c;
+
+    public categorie getCatParId(int id) {
+        String sql = "SELECT * FROM categorie WHERE id = ?";
+        PreparedStatement ste;
+        try {
+            ste = cnx.prepareStatement(sql);
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            if (rs.next()) {
+                categorie c = new categorie(
+                        rs.getInt("id"),
+                        rs.getString("nom_c"),
+                        rs.getString("image_c")
+                );
+                return c;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+        return null;
     }
-    return null;
-}
+        public void notifyUser(String message) {
+        if (SystemTray.isSupported()) {
+            try {
+                // Initialiser SystemTray
+                SystemTray tray = SystemTray.getSystemTray();
+
+                // Créer une icône pour la notification
+                Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
+                TrayIcon trayIcon = new TrayIcon(image, "Notification");
+
+                // Ajouter l'icône au SystemTray
+                tray.add(trayIcon);
+
+                // Afficher la notification
+                trayIcon.displayMessage("Notification", message, TrayIcon.MessageType.INFO);
+            } catch (AWTException e) {
+                System.err.println("Erreur lors de l'initialisation du SystemTray: " + e);
+            }
+        } else {
+            System.out.println("SystemTray n'est pas pris en charge");
+        }
+    }
 }

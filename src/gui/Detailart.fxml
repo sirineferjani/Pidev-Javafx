@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
 <AnchorPane id="AnchorPane" fx:id="pan" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailartController">
    <children>
@@ -28,5 +29,7 @@
          </image>
       </ImageView>
       <Button layoutX="26.0" layoutY="81.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: transparent;" />
+      <Rating fx:id="rate" layoutX="263.0" layoutY="317.0" onMouseClicked="#rating" />
+    
    </children>
 </AnchorPane>

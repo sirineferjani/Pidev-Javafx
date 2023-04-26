@@ -77,7 +77,7 @@ public class ArticledisplayController implements Initializable {
             Logger.getLogger(ArticledisplayController.class.getName()).log(Level.SEVERE, null, ex);
         }
          recherche();
-          articleService a=new articleService();
+        /*  articleService a=new articleService();
         
         listprod=a.afficherArticle();
         SMS ss=new SMS();
@@ -85,7 +85,7 @@ public class ArticledisplayController implements Initializable {
             if(art.getStock()==0){
                 ss.sms(art.getNom_article());
             }
-        }
+        } */
     }    
   /*    public static void sendSms(String recipient, String messageBody) {
     Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
@@ -174,6 +174,7 @@ public class ArticledisplayController implements Initializable {
         sms(a.getNom_c);
     }
 }*/
+
     private Node createArticleNode(article article) throws FileNotFoundException {
     // Créer un VBox pour contenir le nom et le prix de l'article
      if(article == null) {

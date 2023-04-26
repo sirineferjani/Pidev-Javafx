@@ -25,9 +25,9 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
                 try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/articledisplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/stat.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root,700,500);
+            Scene scene = new Scene(root,600,400);
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);
             primaryStage.show();

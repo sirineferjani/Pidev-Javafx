@@ -9,6 +9,7 @@ import entitie.article;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +21,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontWeight;
+import service.articleService;
 import utils.Statics;
 
 /**
@@ -44,25 +48,28 @@ public class DetailartController implements Initializable {
     @FXML
     private Label dispoprodlabel;
 
+    article a;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-     public void setlabelprod(article a){
-        
+    }
+
+    public void setlabelprod(article a) {
+
         try {
-            artview.setImage(new Image(new FileInputStream(Statics.uploadDirectory+a.getImage())));
+            artview.setImage(new Image(new FileInputStream(Statics.uploadDirectory + a.getImage())));
             artview.setFitWidth(200);
             artview.setFitHeight(200);
             artview.setPreserveRatio(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DetailartController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        art=a;
+
+        art = a;
         nomart.setText(a.getNom_article());
         nomart.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         prix.setText(Integer.toString(a.getPrix()));
@@ -70,11 +77,11 @@ public class DetailartController implements Initializable {
         description.setText(a.getDescription());
         description.setWrapText(true);
         description.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
-       
-        if(a.getStock()==0){
+
+        if (a.getStock() == 0) {
             dispoprodlabel.setText("Out Of Stock");
             dispoprodlabel.setTextFill(Color.RED);
-        }else{
+        } else {
             dispoprodlabel.setText("In Stock");
             dispoprodlabel.setTextFill(Color.GREEN);
         }
@@ -85,10 +92,20 @@ public class DetailartController implements Initializable {
 //        vboxlabe.getChildren().addAll(nomprodlabel, prixprodlabel, descriptionprodlabel, dispoprodlabel);
 //        Pane parentPane = new Pane(contentHBox);
 //        parentPane.setPrefSize(500, 500);
+
+    }
+    /*  private void ratted(MouseEvent event) {
+        System.out.println(ratingstar.getRating());
+        articleService ps=new articleService();
+        ps.updaterate(a.getId(), (float)ratingstar.getRating());
+        article pp=new article();
+        try {
+            pp=ps.findartbyid(a.getId());
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailartController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //notelabel.setText(Math.round(pp.getNote())+"/5");
         
-        
-        
-        
-}
-    
+    }*/
+
 }
