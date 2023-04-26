@@ -61,7 +61,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-@FXML
+/*@FXML
 public void handleLogin(ActionEvent event) throws SQLException, Exception {
     try {
         boolean result = service.login(emaillogin.getText(), pwdlogin.getText());
@@ -120,6 +120,41 @@ public void handleLogin(ActionEvent event) throws SQLException, Exception {
                 alert.setContentText("Le code de vérification est incorrect. Veuillez réessayer.");
                 alert.showAndWait();
             }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}*/
+       
+@FXML
+
+  public void handleLogin(ActionEvent event) throws SQLException {
+    try {
+        boolean result = service.login(emaillogin.getText(), pwdlogin.getText());
+        if (result) {
+            user u = service.getUserByEmail2(emaillogin.getText());
+            if(u.getRole().equals("Admin")) {
+            Parent root = FXMLLoader.load(getClass().getResource("adminback.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            }
+            else if(u.getRole().equals("User")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("profileuser.fxml"));
+                Parent root = loader.load();
+                ProfileuserController controller = loader.getController();
+                controller.setUserData(u);
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de connexion");
+            alert.setContentText("Identifiant ou mot de passe incorrect");
+            alert.showAndWait();
         }
     } catch (IOException e) {
         e.printStackTrace();

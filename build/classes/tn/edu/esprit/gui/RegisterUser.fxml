@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.RegisterUserController">
     <children>
         <ImageView fitHeight="499.0" fitWidth="609.0" pickOnBounds="true">
@@ -27,8 +26,6 @@
                                 <Image url="@../images/mer.jpg" />
                             </image>
                         </ImageView>
-                      <TextField fx:id="captchaInput" layoutX="104.0" layoutY="69.0" promptText="Enter Captcha" styleClass="captcha-input" />
-                      <Button fx:id="submitBtn" layoutX="36.0" layoutY="77.0" text="Submit" />
                     </children>
                 </Pane>
                 <Label layoutX="328.0" layoutY="14.0" text="Sign Up" textFill="WHITE">
@@ -59,7 +56,7 @@
                 <TextField fx:id="imageUser" layoutX="378.0" layoutY="333.0" prefHeight="2.0" prefWidth="113.0" promptText="Image" style=" -fx-text-inner-color: #696969;  -fx-background-color: #F2F2F2;   -fx-border-width: 1px;" />
                 <Button layoutX="262.0" layoutY="338.0" mnemonicParsing="false" onAction="#uploadimgeUser" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #383838; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-text-fill: #ffffff; -fx-font-weight: bold;     -fx-font-size: 14px;     -fx-padding: 10px 20px;" text="image" />
                 <Label layoutX="467.0" layoutY="400.0" onMouseClicked="#GoToLogin" text="compte existant?" />
-            
+             
           
             </children>
         </AnchorPane>

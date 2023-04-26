@@ -119,8 +119,12 @@ public class ProfileuserController implements Initializable {
 
         try {
             // Générer le contenu du QR code
-            String qrCodeContent = String.format("Nom : %s\nEmail : %s\nAdresse: %s",
-                    loggedInUser.getNom(), loggedInUser.getEmail(), loggedInUser.getPrenom());
+           /* String qrCodeContent = String.format("Nom : %s\nEmail : %s\nAdresse: %s",
+                    loggedInUser.getNom(), loggedInUser.getEmail(), loggedInUser.getPrenom());*/
+           
+                    
+         String qrCodeContent = String.format("https://nourbaatour.github.io/mon-site-web/?nom=%s&email=%s&adresse=%s",
+                loggedInUser.getNom(), loggedInUser.getEmail() ,loggedInUser.getPrenom());
 
             // Créer un writer pour le QR code
             QRCodeWriter qrCodeWriter = new QRCodeWriter();

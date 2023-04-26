@@ -52,9 +52,6 @@ import tn.edu.esprit.entities.user;
 
 import tn.edu.esprit.services.ServicePersonne;
 
-import com.wf.captcha.utils.CaptchaUtil;
-import com.wf.captcha.base.Captcha;
-
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +62,12 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import com.octo.captcha.service.CaptchaServiceException;
+import com.octo.captcha.service.image.ImageCaptchaService;
+import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import java.io.ByteArrayInputStream;
 
 /**
  * FXML Controller class
@@ -81,6 +84,8 @@ public class RegisterUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        captchaService = new DefaultManageableImageCaptchaService();
+        generateCaptcha();
     }
     @FXML
     private TextField tfNom;
@@ -104,6 +109,9 @@ public class RegisterUserController implements Initializable {
 
     private final String SITE_KEY = "6LfjapclAAAAAOdw-LLrDl6T-G5Bz9vN4MWQPUAU";
     private final String SECRET_KEY = "6LfjapclAAAAAORI3yxw0Gf8d1AE48RHhOg6Wy78";
+    private ImageCaptchaService captchaService;
+
+  
 
     Random r = new Random();
     static int nb_valider;
@@ -151,8 +159,7 @@ public class RegisterUserController implements Initializable {
         return true;
     }
 
-
-      @FXML
+  @FXML
     private void ajouterPersonne(ActionEvent event) throws IOException {
         if (!isValidInput()) {
             return;
@@ -188,9 +195,10 @@ public class RegisterUserController implements Initializable {
             a.showAndWait();
         }
     }
-   
 
-   /* @FXML
+    
+   
+    /* @FXML
     private void ajouterPersonne(ActionEvent event) throws IOException {
         if (!isValidInput()) {
             return;
@@ -241,8 +249,6 @@ public class RegisterUserController implements Initializable {
             a.showAndWait();
         }
     }*/
-
-    
     public static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -280,25 +286,25 @@ public class RegisterUserController implements Initializable {
         }
     }
 
-      @FXML
-private void choisirImage(ActionEvent event) {
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Choisir une image");
-    fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"),
-        new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
-    );
-    File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
-    if (selectedFile != null) {
-        try {
-            Image image = new Image(selectedFile.toURI().toString());
-            imageView.setImage(image);
-        } catch (Exception e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Erreur lors du chargement de l'image.", ButtonType.OK);
-            a.showAndWait();
+    @FXML
+    private void choisirImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
+        );
+        File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+        if (selectedFile != null) {
+            try {
+                Image image = new Image(selectedFile.toURI().toString());
+                imageView.setImage(image);
+            } catch (Exception e) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Erreur lors du chargement de l'image.", ButtonType.OK);
+                a.showAndWait();
+            }
         }
     }
-}
 }
 
 /* fel fxml <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="343.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
