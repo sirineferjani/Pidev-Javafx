@@ -24,6 +24,7 @@ import javafx.scene.text.Font;
 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontWeight;
+import org.controlsfx.control.Rating;
 import service.articleService;
 import utils.Statics;
 
@@ -48,7 +49,9 @@ public class DetailartController implements Initializable {
     @FXML
     private Label dispoprodlabel;
 
-    article a;
+    //article art;
+    @FXML
+    private Rating rate;
 
     /**
      * Initializes the controller class.
@@ -107,5 +110,13 @@ public class DetailartController implements Initializable {
         //notelabel.setText(Math.round(pp.getNote())+"/5");
         
     }*/
+
+    @FXML
+    private void rating(MouseEvent event) {
+        System.out.println(rate.getRating());
+        articleService aa=new articleService();
+        System.out.println(art.getId());
+        aa.updaterate(art.getId(), (float)rate.getRating());
+    }
 
 }

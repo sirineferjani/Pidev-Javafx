@@ -34,7 +34,10 @@ public class NewMain {
       //cs.supprimerCategorie(53);
         System.out.println(as.findprodbycat(20));*/
          SMS ss=new SMS();
-         ss.sms("tente");
+         //ss.sms("tente");
+         articleService a=new articleService();
+         //a.updaterate(38, 5.0f);
+         System.out.println(a.findrecommendedart());
          
     }
     

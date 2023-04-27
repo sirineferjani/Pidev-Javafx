@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="531.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArticleController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="592.0" layoutX="138.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/gra.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="68.0" layoutX="-11.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="739.0" />
+      <TextField fx:id="refa" layoutX="310.0" layoutY="130.0" style="-fx-alignment: b1d9ff;" />
+      <Label layoutX="186.0" layoutY="126.0" text="Reférence :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="186.0" layoutY="186.0" prefHeight="30.0" prefWidth="123.0" text="Nom article:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="noma" layoutX="307.0" layoutY="192.0" style="-fx-alignment: b1d9ff;" />
+      <Label layoutX="185.0" layoutY="261.0" prefHeight="27.0" prefWidth="105.0" text="Description:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="476.0" layoutY="188.0" text="Prix:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="241.0" layoutY="347.0" text="Image:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="470.0" layoutY="125.0" text="Stock:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="prixa" layoutX="531.0" layoutY="192.0" style="-fx-alignment: b1d9ff;" />
+      <TextField fx:id="dsea" layoutX="292.0" layoutY="265.0" style="-fx-alignment: b1d9ff;" styleClass="border" stylesheets="@../../build/style.css" />
+      <TextField fx:id="imagea" editable="false" layoutX="310.0" layoutY="347.0" style="-fx-alignment: b1d9ff;" />
+      <TextField fx:id="sa" layoutX="531.0" layoutY="129.0" style="-fx-alignment: b1d9ff;" />
+      <Button fx:id="btnaj" layoutX="303.0" layoutY="428.0" mnemonicParsing="false" onAction="#ajoutarticle" prefHeight="48.0" prefWidth="168.0" style="-fx-background-color: b1d9ff;" text="Ajouter" />
+      <Button fx:id="btnaff" layoutX="516.0" layoutY="428.0" mnemonicParsing="false" onAction="#afficherarticle" prefHeight="48.0" prefWidth="178.0" style="-fx-background-color: b1d9ff;" text="Afficher" />
+      <Button fx:id="upload" layoutX="491.0" layoutY="347.0" mnemonicParsing="false" onAction="#uploadimg" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: b1d9ff;" text="choisir un fichier" />
+      <ComboBox fx:id="catcombo" layoutX="547.0" layoutY="265.0" prefWidth="150.0" style="-fx-background-color: b1d9ff;" />
+      <Label layoutX="461.0" layoutY="265.0" text="Categorie:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="erreurref" layoutX="309.0" layoutY="160.0" prefHeight="17.0" prefWidth="178.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="erreurstock" layoutX="540.0" layoutY="159.0" prefHeight="17.0" prefWidth="168.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="erreurnom" layoutX="317.0" layoutY="225.0" prefHeight="17.0" prefWidth="161.0" textFill="RED" />
+      <Label fx:id="erreurprix" layoutX="541.0" layoutY="222.0" prefHeight="17.0" prefWidth="178.0" textFill="RED" />
+      <Label fx:id="erreurimg" layoutX="311.0" layoutY="383.0" prefHeight="17.0" prefWidth="201.0" textFill="RED" />
+      <Label fx:id="erreurdesc" layoutX="292.0" layoutY="302.0" prefHeight="17.0" prefWidth="210.0" textFill="RED" />
+      <Label layoutX="224.0" layoutY="11.0" prefHeight="45.0" prefWidth="303.0" text="Ajout d'un article" textAlignment="RIGHT" textFill="#000303" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <GridPane layoutY="8.0" prefHeight="392.0" prefWidth="136.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="90.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="219.0" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="182.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="232.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="146.0" style="-fx-background-color: b1d9ff;" text="Gestion des articles" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <ImageView fitHeight="85.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true" translateY="-15.0" GridPane.valignment="TOP">
+               <image>
+                  <Image url="@../image/logo%20(3).png" />
+               </image>
+            </ImageView>
+            <Button fx:id="cat" mnemonicParsing="false" onAction="#Gestioncategorie" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: b1d9ff;" text="Gestion des catégories" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

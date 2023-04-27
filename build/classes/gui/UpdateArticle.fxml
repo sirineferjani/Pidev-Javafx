@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UpdateArticleController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b1d9ff" height="66.0" stroke="BLACK" strokeType="INSIDE" width="564.0" />
+      <Label layoutX="59.0" layoutY="90.0" text="Reference:" />
+      <Label layoutX="69.0" layoutY="140.0" text="Nom:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="69.0" layoutY="206.0" text="Stock:" />
+      <Label layoutX="310.0" layoutY="88.0" text="Description:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="330.0" layoutY="138.0" prefHeight="17.0" prefWidth="36.0" text="Prix:" />
+      <Label layoutX="324.0" layoutY="192.0" text="Categorie:" />
+      <Label layoutX="69.0" layoutY="263.0" text="Image:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="reffield" layoutX="118.0" layoutY="88.0" styleClass="border" stylesheets="@../../build/style.css" />
+      <TextField fx:id="descfield" layoutX="379.0" layoutY="81.0" styleClass="border" stylesheets="@../../build/style.css" />
+      <TextField fx:id="nomfield" layoutX="118.0" layoutY="139.0" styleClass="border" stylesheets="@../../build/style.css" />
+      <TextField fx:id="prixfield" layoutX="379.0" layoutY="134.0" styleClass="border" stylesheets="@../../build/style.css" />
+      <TextField fx:id="sotckfield" layoutX="118.0" layoutY="203.0" styleClass="border" stylesheets="@../../build/style.css" />
+      <TextField fx:id="imagefied" layoutX="118.0" layoutY="260.0" styleClass="border" stylesheets="@../../build/style.css" />
+      <ComboBox fx:id="catcombo" layoutX="384.0" layoutY="188.0" prefWidth="150.0" style="-fx-background-color: b1d9ff;" />
+      <Button fx:id="btnimg" layoutX="304.0" layoutY="259.0" mnemonicParsing="false" onAction="#addimgonclick" style="-fx-background-color: b1d9ff;" text="Choisir un fichier" />
+      <Button fx:id="btnmodif" layoutX="204.0" layoutY="325.0" mnemonicParsing="false" onAction="#modifarticleonclick" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: b1d9ff;" styleClass="button-style" stylesheets="@../../build/style.css" text="Modifier" />
+      <Button fx:id="btnaffichage" layoutX="376.0" layoutY="325.0" mnemonicParsing="false" onAction="#affichage" prefHeight="47.0" prefWidth="128.0" style="-fx-background-color: b1d9ff;" styleClass="button-style" stylesheets="@../../build/style.css" text="Affichage" />
+      <ImageView fitHeight="80.0" fitWidth="75.0" layoutX="-3.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/logo%20(3).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="155.0" layoutY="14.0" prefHeight="47.0" prefWidth="242.0" text="Modifier article">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

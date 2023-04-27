@@ -69,6 +69,7 @@ public class articleService {
                 a.setPrix(rs.getInt("prix"));
                 a.setImage(rs.getString("image"));
                 a.setStock(rs.getInt("stock"));
+                a.setNote(rs.getFloat("note"));
 
                 myList.add(a);
             }
@@ -169,7 +170,8 @@ public class articleService {
         categorieService cs = new categorieService();
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
-            article c = new article(resultSet.getInt(1), resultSet.getInt(2), resultSet.getString(3), resultSet.getString(4), resultSet.getInt(5), resultSet.getString(6), resultSet.getInt(7), resultSet.getFloat(8), cs.getCatParId(resultSet.getInt(9)));
+            article c = new article(resultSet.getInt(1), resultSet.getInt(2), resultSet.getString(3), resultSet.getString(4), resultSet.getInt(5), resultSet.getString(6), resultSet.getInt(7), resultSet.getFloat(9), cs.getCatParId(resultSet.getInt(8)));
+            //System.out.println(resultSet.getFloat(sql));
             return c;
         } else {
             return null;
@@ -183,6 +185,7 @@ public class articleService {
         } catch (SQLException ex) {
             Logger.getLogger(articleService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(pp.getNote());
         if (pp.getNote() == 0) {
             String sql = "update article set note=? where id=? ";
             PreparedStatement ste;
@@ -207,7 +210,7 @@ public class articleService {
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }
-        }
+    }
     }
      public void notifyUser(String message) {
         if (SystemTray.isSupported()) {
@@ -230,6 +233,34 @@ public class articleService {
         } else {
             System.out.println("SystemTray n'est pas pris en charge");
         }
+    }
+     
+     public ObservableList<article> findrecommendedart() {
+        ObservableList<article> myList = FXCollections.observableArrayList();
+
+        try {
+            String sql = "SELECT * FROM article where note>3";
+            Statement ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+            categorieService cs = new categorieService();
+            while (rs.next()) {
+                article a = new article();
+                a.setId(rs.getInt("id"));
+                a.setCategorie(cs.getCatParId(rs.getInt("categories_id")));
+                a.setRef_article(rs.getInt("ref_article"));
+                a.setNom_article(rs.getString("nom_article"));
+                a.setDescription(rs.getString("description"));
+                a.setPrix(rs.getInt("prix"));
+                a.setImage(rs.getString("image"));
+                a.setStock(rs.getInt("stock"));
+                a.setNote(rs.getFloat("note"));
+
+                myList.add(a);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
     }
 
 }

@@ -132,6 +132,7 @@ public class ArtByCatController implements Initializable {
                         stage.setTitle("Detail Article");
                         DetailartController dpc = loader.getController();
                         dpc.setlabelprod(a);
+                        System.out.println(a.getId());
                         Stage stage1 = (Stage) card.getScene().getWindow();
                         stage1.close();
                         stage.show();
@@ -258,7 +259,7 @@ public class ArtByCatController implements Initializable {
         listprodbycat.getChildren().clear();
         for (article article : articlesTriés) {
             try {
-                VBox card = (VBox) createArticleNode(article);
+                Node card =createArticleNode(article);
                 listprodbycat.getChildren().add(card);
                 listprodbycat.setMargin(card, new Insets(5, 5, 5, 5));
             } catch (FileNotFoundException ex) {
@@ -278,7 +279,7 @@ public class ArtByCatController implements Initializable {
         listprodbycat.getChildren().clear();
         for (article article : articlesTriés) {
             try {
-                VBox card = (VBox) createArticleNode(article);
+               Node card = createArticleNode(article);
                 listprodbycat.getChildren().add(card);
                 listprodbycat.setMargin(card, new Insets(5, 5, 5, 5));
             } catch (FileNotFoundException ex) {

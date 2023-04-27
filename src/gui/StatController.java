@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entitie.article;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,11 +20,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import service.articleService;
 
 /**
  * FXML Controller class
@@ -45,40 +48,57 @@ public class StatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         stat();
+         afficherStatistiques();
     }    
-private void stat() {
-    
-        // Création du graphique
-        PieChart pieChart = new PieChart(data);
-        pieChart.setTitle("Statistiques nombres des catégories");
-        pieChart.setLegendSide(Side.LEFT);
-        
+   private void afficherStatistiques() {
+    // Récupérer la liste des articles depuis une source de données
+   articleService cs=new articleService();
+        ObservableList<article>articles=FXCollections.observableArrayList();
+        articles=cs.afficherArticle();     // récupérer la liste des articles
 
-        // Création d'une pile pour afficher le graphique
-        StackPane root = new StackPane();
-        root.getChildren().add(pieChart);
+  int nbArticlesNoteFaible = 0;
+int nbArticlesNoteMoyenne = 0;
+int nbArticlesNoteExcellente = 0;
 
-        // Création de la scène
-        Scene scene = new Scene(root, 600, 400);
-
-        // Affichage de la scène
-
+// Compter le nombre d'articles pour chaque catégorie de note
+for (article article : articles) {
+    float note = article.getNote();
+    if (note < 2.0) {
+        nbArticlesNoteFaible++;
+    } else if (note < 3.0) {
+        nbArticlesNoteMoyenne++;
+    } else {
+        nbArticlesNoteExcellente++;
     }
+}
 
-    private void loadData() throws SQLException {
-        String query = "SELECT c.categorie, COUNT(a.id) AS nb_article "
-                     + "FROM categorie c "
-                     + "LEFT JOIN article a ON c.id = a.id_categorie "
-                     + "GROUP BY c.categorie";
-        PreparedStatement stmt = cnx.prepareStatement(query);
-        ResultSet rs = stmt.executeQuery();
+    // Créer une liste de données pour le camembert
+    ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+    int totalArticles = nbArticlesNoteFaible + nbArticlesNoteMoyenne + nbArticlesNoteExcellente;
+   
+    // Ajouter les données au diagramme circulaire
+if (nbArticlesNoteFaible > 0) {
+    double pourcentage = ((float)nbArticlesNoteFaible / totalArticles) * 100.0;
+    pieChartData.add(new PieChart.Data("Note faible (" + nbArticlesNoteFaible + ") " + String.format("%.2f", pourcentage) + "%", nbArticlesNoteFaible));
+}
+if (nbArticlesNoteMoyenne > 0) {
+    double pourcentage = ((float)nbArticlesNoteMoyenne / totalArticles) * 100.0;
+    pieChartData.add(new PieChart.Data("Note moyenne (" + nbArticlesNoteMoyenne + ") " + String.format("%.2f", pourcentage) + "%", nbArticlesNoteMoyenne));
+}
+if (nbArticlesNoteExcellente > 0) {
+    double pourcentage = ((float)nbArticlesNoteExcellente / totalArticles) * 100.0;
+    pieChartData.add(new PieChart.Data("Note excellente (" + nbArticlesNoteExcellente + ") " + String.format("%.2f", pourcentage) + "%", nbArticlesNoteExcellente));
+}
+    // Créer et configurer le camembert
+    PieChart chart = new PieChart(pieChartData);
+    chart.setTitle("Statistiques des articles en fonction de leur note");
 
-        while (rs.next()) {
-            String category = rs.getString("categorie");
-            int count = rs.getInt("nb_article");
-            data.add(new PieChart.Data(category, count));
-        }
-    }
+    // Afficher le camembert dans une nouvelle fenêtre
+    Stage stage = new Stage();
+    Scene scene = new Scene(new Group(chart), 600, 400);
+    stage.setScene(scene);
+    stage.show();
+    System.out.println("Fenêtre affichée");
+}
 
 }
