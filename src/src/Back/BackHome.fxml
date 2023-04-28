@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
+<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import com.gluonhq.charm.glisten.control.ExpansionPanel?>
+<?import com.gluonhq.charm.glisten.control.ExpansionPanel.CollapsedPanel?>
+<?import com.gluonhq.charm.glisten.control.ExpansionPanelContainer?>
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BubbleChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="877.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.BackHomeController">
+    <stylesheets>
+        <URL value="@backhome.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="637.0" prefWidth="877.0">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Welcome to the ATP AGENCY">
+                     <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <VBox prefHeight="538.0" prefWidth="204.0" style="-fx-background-color: #2F4F4F;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Layer_6__2_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: transparent;" text="Home" textFill="#cf3636">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="50.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/25694.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="204.0" style="-fx-background-color: transparent;" text="SelectedProducts">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/126083.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Bills">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/2584894.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="206.0" style="-fx-background-color: transparent;" text="Basket">
+                     <opaqueInsets>
+                        <Insets left="50.0" />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/5218600.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="208.0" style="-fx-background-color: transparent;" text="Contact">
+                     <opaqueInsets>
+                        <Insets left="50.0" />
+                     </opaqueInsets>
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/5068731.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+         <right>
+            <VBox prefHeight="538.0" prefWidth="678.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox maxHeight="200.0" prefHeight="200.0" prefWidth="674.0">
+                     <children>
+                        <VBox maxHeight="169.0" prefHeight="169.0" prefWidth="242.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="264.0">
+                                 <children>
+                                    <TextField alignment="CENTER" promptText="customer reviews" text="customer reviews">
+                                       <font>
+                                          <Font name="System Bold Italic" size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <BottomNavigation prefHeight="119.0" prefWidth="242.0">
+                                        <actionItems>
+                                            <BottomNavigationButton selected="true" text="Recent">
+                                                <graphic>
+                                                    <Icon content="RECENT_ACTORS" />
+                                                </graphic>
+                                            </BottomNavigationButton>
+                                            <BottomNavigationButton text="Favourite">
+                                                <graphic>
+                                                    <Icon content="FAVORITE" />
+                                                </graphic>
+                                            </BottomNavigationButton>
+                                            <BottomNavigationButton text="Nearby">
+                                                <graphic>
+                                                    <Icon content="NEAR_ME" />
+                                                </graphic>
+                                            </BottomNavigationButton>
+                                        </actionItems>
+                                    </BottomNavigation>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox maxHeight="100.0" prefHeight="100.0" prefWidth="100.0">
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                           <children>
+                              <TextField alignment="CENTER" promptText="customer reviews" text="Statistics">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </TextField>
+                              <BubbleChart prefHeight="110.0" prefWidth="170.0">
+                                <xAxis>
+                                  <NumberAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BubbleChart>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="226.0" prefWidth="678.0">
+                     <children>
+                        <ExpansionPanelContainer prefHeight="226.0" prefWidth="687.0">
+                            <items>
+                                <ExpansionPanel>
+                                    <collapsedContent>
+                                        <ExpansionPanel.CollapsedPanel>
+                                            <titleNodes>
+                                                <Label text="Products Selected this year" />
+                                                <Label text="Sport" />
+                                            </titleNodes>
+                                        </ExpansionPanel.CollapsedPanel>
+                                    </collapsedContent>
+                                </ExpansionPanel>
+                                <ExpansionPanel>
+                                    <collapsedContent>
+                                        <ExpansionPanel.CollapsedPanel>
+                                            <titleNodes>
+                                                <Label text="Location" />
+                                                <Label text="Tunis" />
+                                            </titleNodes>
+                                        </ExpansionPanel.CollapsedPanel>
+                                    </collapsedContent>
+                                </ExpansionPanel>
+                            </items>
+                        </ExpansionPanelContainer>
+                     </children></HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="83.0" text="ATP AGENCY">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="+216 697 897 / 71 548 325 ">
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/5068731.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <Label text="We are have an official page ">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/2021_Facebook_icon.svg.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,43 @@
+.search-box{
+    -fx-background-color : #FFFFFF;
+    -fx-background-radius:100;
+}
+.transparent{
+    -fx-background-color : rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color : #828282;
+    -fx-background-radius : 30;
+}
+
+.right-bar{
+    -fx-background-color : #D3D3D3;
+}
+.shadow{
+    -fx-effect : dropshadow(three-pass-box , rgba(0,0,0,0.1) , 10.0 , 0.0 , 0.0 , 10.0 );
+}
+
+.chosen-fruit{
+    -fx-background-color :#F08080	;
+    -fx-background-radius : 30;
+}
+.btn-add{
+     -fx-background-color : #FFFFFF;
+    -fx-background-radius:100;
+}
+.Big-hbox{
+     -fx-background-radius:10;
+}
+.hbox-left{
+     -fx-background-color : #D3D3D3;
+    -fx-background-radius:30;
+    height: 100px;
+}
+.Box-products{
+   
+    -fx-background-color : #FFFFFF;
+    -fx-background-radius:30;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}

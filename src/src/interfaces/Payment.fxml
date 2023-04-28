@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="912.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="interfaces.PaymentController">
+    <stylesheets>
+        <URL value="@payment.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="680.0" prefWidth="912.0">
+         <top>
+            <AnchorPane prefHeight="82.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="35.0" prefWidth="912.0" style="-fx-background-color: #2F4F4F;">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="51.0" layoutX="861.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/3094700.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <HBox layoutX="253.0" layoutY="35.0" prefHeight="79.0" prefWidth="658.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="144.0" style="-fx-background-color: transparent;" text="Dashboard">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/dashboard-line-icon-free-vector-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: transparent;" text="Products">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/téléchargement-removebg-preview%20(1).png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Event">
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/3995725.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" style="-fx-background-color: transparent;" text="Activities">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/8291209.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="122.0" style="-fx-background-color: transparent;" text="BackUp">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/Backup-Icon-PNG-Clipart-Background.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </HBox>
+                  <Label fx:id="menu" layoutX="49.0" layoutY="39.0" prefHeight="58.0" prefWidth="124.0" text="Menu">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/Layer_6__2_-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="menuClose" layoutX="49.0" layoutY="38.0" prefHeight="58.0" prefWidth="124.0" text="Menu">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/Layer_6__2_-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <VBox prefHeight="580.0" prefWidth="222.0" style="-fx-background-color: #2F4F4F;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Home">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/25694.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Basket">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/5218600.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Payment">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/1019607.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Bills">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/2584894.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="Contact">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/3095583.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <HBox maxHeight="566.0" prefHeight="566.0" prefWidth="690.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="700.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="66.0" text="Settings">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="300.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="25.0" prefWidth="60.0" text="Payment">
+                           <VBox.margin>
+                              <Insets left="300.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Freestyle Script" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="New Cards">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Label>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.4000244140625" minWidth="10.0" prefWidth="104.60002441406249" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="510.5999755859375" minWidth="10.0" prefWidth="385.3999755859375" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <VBox.margin>
+                              <Insets left="80.0" right="80.0" top="30.0" />
+                           </VBox.margin>
+                           <children>
+                              <TextField fx:id="firstName" maxWidth="150.0" prefHeight="26.0" prefWidth="100.0" promptText="firstname" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="lastName" maxWidth="160.0" promptText="lastname" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="CIN" maxWidth="200.0" promptText="enter your number card" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="phoneNumber" maxWidth="260.0" promptText="216 - 562 - 548" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label text="FirstName" />
+                              <Label text="LastName" GridPane.rowIndex="1" />
+                              <Label text="CIN" GridPane.rowIndex="2" />
+                              <Label text="Expiration Date" GridPane.rowIndex="3" />
+                              <Label text="Phone Number" GridPane.rowIndex="5" />
+                              <DatePicker fx:id="ExpirationDate" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" />
+                                 </GridPane.margin>
+                              </DatePicker>
+                              <Label text="CreditCard Number" GridPane.rowIndex="4" />
+                              <TextField maxWidth="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/purepng.com-mastercard-logologobrand-logoiconslogos-251519938372dnf77.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets left="100.0" top="30.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0">
+                           <VBox.margin>
+                              <Insets left="200.0" top="-40.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/Visa_Inc._logo.svg.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </CheckBox>
+                        <Button fx:id="Add" mnemonicParsing="false" onAction="#Add" prefHeight="39.0" prefWidth="206.0" text="Add Card">
+                           <VBox.margin>
+                              <Insets left="250.0" top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

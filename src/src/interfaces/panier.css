@@ -1,0 +1,13 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.btn-pay{
+    -fx-border-box: 3px;
+    -fx-border-color :#828282;
+    -fx-border-width: 2px;
+    -fx-background-color:transparent;
+}
