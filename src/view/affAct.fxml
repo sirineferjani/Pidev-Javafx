@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="732.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AffActController">
+   <children>
+      <ImageView fitHeight="883.0" fitWidth="1485.0" layoutX="-322.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/sport.jpg" />
+         </image></ImageView>
+      <TableView fx:id="affiche" layoutX="-3.0" layoutY="68.0" prefHeight="422.0" prefWidth="1166.0">
+         <columns>
+            <TableColumn fx:id="ida" prefWidth="145.99996948242188" text="id" />
+            <TableColumn fx:id="noma" prefWidth="251.0" text="Nom" />
+            <TableColumn fx:id="agea" prefWidth="145.0" text="Age" />
+            <TableColumn fx:id="desca" prefWidth="292.0" text="Description" />
+            <TableColumn fx:id="lieua" prefWidth="172.0" text="Lieu" />
+            <TableColumn fx:id="imga" prefWidth="159.0" text="image" />
+         </columns>
+      </TableView>
+      <Button layoutX="599.0" layoutY="30.0" mnemonicParsing="false" onAction="#search" text="rechercher" />
+      <TextField fx:id="rec" layoutX="354.0" layoutY="30.0" onKeyTyped="#rec" />
+      <Button fx:id="rt" layoutY="-1.0" mnemonicParsing="false" onAction="#rtr" text="&lt;&lt;" textFill="#bf1d1d">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/190238.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AllAct3Controller">
+   <children>
+      <ImageView fitHeight="724.0" fitWidth="1315.0" layoutX="-12.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/istockphoto-1138288771-612x612.jpg" />
+         </image>
+      </ImageView>
+      <ScrollPane fx:id="scroll" layoutX="187.0" layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="644.0" prefWidth="906.0" style="-fx-background-color: white;" styleClass="transparent">
+         <content>
+            <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <ImageView fitHeight="140.0" fitWidth="146.0" layoutX="1115.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/preloader.gif" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="522.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activites">
+         <font>
+            <Font name="Consolas Bold Italic" size="46.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="140.0" fitWidth="146.0" layoutX="35.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/preloader.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

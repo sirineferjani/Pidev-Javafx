@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="732.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.IntrActvAgcController">
+   <children>
+      <ImageView fitHeight="881.0" fitWidth="1481.0" layoutX="-323.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background.jpg" />
+         </image></ImageView>
+      <Button fx:id="act" layoutX="244.0" layoutY="265.0" mnemonicParsing="false" onAction="#ac" prefHeight="31.0" prefWidth="139.0" text="Gestion d'activité" />
+      <Button fx:id="agc" layoutX="730.0" layoutY="265.0" mnemonicParsing="false" onAction="#ag" prefHeight="31.0" prefWidth="139.0" text="Gestion d'agence" />
+   </children>
+</AnchorPane>
